@@ -1,0 +1,153 @@
+<table class="myTableRekap table table-striped text-center table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Kode</th>
+      <th scope="col">Supplier</th>
+      <th scope="col">Karyawan</th>
+      <th scope="col">Jumlah</th>
+      <th scope="col">Total</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>2023</td>
+      <td>PT X</td>
+      <td>Adi</td>
+      <td>6</td>
+      <td>10</td>
+      <td>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#modalRekapView"
+          class="viewRekap btn btn-outline-primary"
+        >
+          <i class="bi bi-eye"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>PT X</td>
+      <td>Codi</td>
+      <td>6</td>
+      <td>10</td>
+      <td>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#modalRekapView"
+          class="viewRekap btn btn-outline-primary"
+        >
+          <i class="bi bi-eye"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>PT Y</td>
+      <td>Bui</td>
+      <td>8</td>
+      <td>20</td>
+      <td>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#modalRekapView"
+          class="viewRekap btn btn-outline-primary"
+        >
+          <i class="bi bi-eye"></i>
+        </button>
+      </td>
+    </tr>
+
+    <tr class="bg-danger text-white font-weight-bold h4">
+      <td colspan="3">Total</td>
+      <td id="jumlah"></td>
+      <td id="total"></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  class="modal fade"
+  id="modalRekapView"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalRekapViewLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalRekapViewLabel">Detail Pembelian</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card text-center">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item detKode">Kode</li>
+            <li class="list-group-item detSup">Supplier</li>
+            <li class="list-group-item detKar">Karyawan</li>
+            <li class="list-group-item detJumlah">Jumlah</li>
+            <li class="list-group-item detTotal">Total</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    var jumlah = 0;
+    var total = 0;
+
+    var jumlahBaris = $("tbody tr").length - 1;
+    console.log(jumlahBaris);
+
+    for (let i = 0; i < jumlahBaris; i++) {
+      jumlah += Number($("tbody tr:eq(" + i + ") td:eq(3)").text());
+      total += Number($("tbody tr:eq(" + i + ") td:eq(4)").text());
+      console.log(i);
+    }
+
+    $("#jumlah").text(jumlah);
+    $("#total").text(total);
+
+    $("tbody").on("click", ".viewRekap", function () {
+      var id = $(this).attr("id");
+      // console.log(id);
+      var currentRow = $(this).closest("tr");
+
+      var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+      var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+      var col3 = currentRow.find("td:eq(2)").text();
+      var col4 = currentRow.find("td:eq(3)").text();
+      var col5 = currentRow.find("td:eq(4)").text();
+
+      $(".detKode").text(col1);
+      $(".detSup").text(col2);
+      $(".detKar").text(col3);
+      $(".detJumlah").text(col4);
+      $(".detTotal").text(col5);
+
+      // console.log(col1, col2, col3);
+    });
+  });
+</script>

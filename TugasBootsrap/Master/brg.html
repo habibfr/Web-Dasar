@@ -1,0 +1,649 @@
+<div class="h1 text-center">Barang</div>
+
+<button
+  type="button"
+  class="btn btn-add btn-danger px-3 my-2"
+  data-toggle="modal"
+  data-target="#staticBackdrop"
+>
+  <i class="bi bi-plus-lg"></i>
+</button>
+
+<div class="wrap">
+  <table
+    id="myTable"
+    class="table text-center table-hover table-striped mb-0 bg-white"
+  >
+    <thead class="bg-light">
+      <tr>
+        <th>Kode</th>
+        <th>Nama</th>
+        <th>Golongan</th>
+        <th>Satuan</th>
+        <th>Harga</th>
+        <th>jumlah</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+      <tr>
+        <td>M002</td>
+        <td>Air</td>
+        <td>Alam</td>
+        <td>Pcs</td>
+        <td>20</td>
+        <td>90</td>
+        <td>
+          <button
+            type="button"
+            data-toggle="modal"
+            data-target="#modalView"
+            class="viewBrg btn btn-outline-primary"
+          >
+            <i class="bi bi-eye"></i>
+          </button>
+          <button
+            type="button"
+            data-target="#staticBackdropSup"
+            class="updateBarang btn btn-outline-info"
+            data-toggle="modal"
+          >
+            <i class="bi bi-pencil-square"></i>
+          </button>
+          <button
+            type="button"
+            data-toggle="modal"
+            data-target="#exampleModal"
+            class="removeBarang btn btn-outline-danger"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-backdrop="static"
+    tabindex="-1"
+    data-keyboard="false"
+    aria-labelledby="modalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="modalLabel">Tambah Barang</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <form
+              action=""
+              method="POST"
+              enctype="multipart/form-data"
+              method="POST"
+              id="ModalForm"
+            >
+              <input
+                type="hidden"
+                name="_token"
+                value="x69ZyrUU0dB2R3MQup1nPSO2BmKoNvtymxYQWPAN"
+              />
+              <input type="hidden" id="editId" value="" />
+              <div class="form-group">
+                <label for="kodeBarang">Kode</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="kodeBarang"
+                  placeholder="M001"
+                  name="kodeBarang"
+                />
+              </div>
+              <div class="form-group">
+                <label for="namaBarang">Nama</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="namaBarang"
+                  placeholder="Batu"
+                />
+              </div>
+              <div class="form-group">
+                <label for="golBarang">Golongan</label>
+                <select class="form-control" id="golBarang">
+                  <option value="0">Pilih Golongan</option>
+                  <option value="RAM">RAM</option>
+                  <option value="PC">Pcs</option>
+                  <option value="VGA">VGA</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="satuanBarang">Satuan</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="satuanBarang"
+                  placeholder="Pcs"
+                />
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col">
+                    <label for="hargaBarang">Harga</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="hargaBarang"
+                      placeholder="10000"
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="jumlahBarang">Jumlah</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="jumlahBarang"
+                      placeholder="5"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              id="saveBarang"
+              data-dismiss="modal"
+            >
+              Add
+            </button>
+            <button
+              type="button"
+              class="btn updt btn-danger"
+              id="saveModalButton"
+              data-dismiss="modal"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="modalView"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalViewLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalViewLabel">Detail Barang</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card text-center">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item detKode">Kode</li>
+            <li class="list-group-item detNama">Nama</li>
+            <li class="list-group-item detGolongan">Golongan</li>
+            <li class="list-group-item detSatuan">Satuan</li>
+            <li class="list-group-item detHarga">Harga</li>
+            <li class="list-group-item detJumlah">Jumlah</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $(function () {
+      //Take the data from the TR during the event button
+      $("table").on("click", "button.updateBarang", function (ele) {
+        // console.log("clik");
+        $("#saveModalButton").show();
+        $("#saveBarang").hide();
+        $("#kodeBarang").prop("disabled", true);
+        //the <tr> variable is use to set the parentNode from "ele"
+        var tr = ele.target.parentNode.parentNode;
+
+        //I get the value from the cells (td) using the parentNode (var tr)
+        var id = $(this).attr("id");
+        // console.log(id);
+        var currentRow = $(this).closest("tr");
+        // console.log(currentRow);
+
+        var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+        var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+        var col3 = currentRow.find("td:eq(2)").text();
+        var col4 = currentRow.find("td:eq(3)").text();
+        var col5 = currentRow.find("td:eq(4)").text();
+        var col6 = currentRow.find("td:eq(5)").text();
+        // console.log(col1);
+
+        //Prefill the fields with the gathered information
+        // $("h5.modal-title").html("Edit Admin Data: " + firstName + "");
+        $("#namaBarang").val(col2);
+        $("#golBarang").val(col3);
+        $("#satuanBarang").val(col4);
+        $("#hargaBarang").val(col5);
+        $("#editId").val(col1);
+        $("#jumlahBarang").val(col6);
+        // $("#editLevel").val(level).attr("selected", "selected");
+
+        //If you need to update the form data and change the button link
+        $("form#ModalForm").attr(
+          "action",
+          window.location.href + "/update/" + id
+        );
+        $("#saveModalButton").attr(
+          "href",
+          window.location.href + "/update/" + id
+        );
+      });
+    });
+
+    $(function () {
+      //Click Event listener waiting for the click from the modal save button
+      $("div.modal-footer").on("click", "button#saveModalButton", function () {
+        //Get all information from the form field
+        var id = $("#editId").attr("value");
+        var nama = $("#namaBarang").val();
+        var jbtn = $("#golBarang").val();
+        var tel = $("#satuanBarang").val();
+        var email = $("#hargaBarang").val();
+        var pass = $("#jumlahBarang").val();
+        var kode = $("#kodeBarang").val();
+
+        $("." + kode + " td:nth-child(2)").text(nama);
+        $("." + kode + " td:eq(2)").text(jbtn);
+        $("." + kode + " td:eq(3)").text(tel);
+        $("." + kode + " td:eq(4)").text(email);
+        $("." + kode + " td:eq(5)").text(pass);
+      });
+    });
+
+    function reset() {
+      $("#kodeBarang").val("");
+      $("#namaBarang").val("");
+      $("#golBarang").val("0");
+      $("#satuanBarang").val("");
+      $("#hargaBarang").val("");
+      $("#editId").val("");
+      $("#jumlahBarang").val("");
+    }
+
+    $(".btn-add").click(function () {
+      reset();
+      $("#saveModalButton").hide();
+      $("#saveBarang").show();
+      $("#kodeBarang").prop("disabled", false);
+    });
+
+    $("#saveBarang").click(function () {
+      let grandTotal = 0;
+
+      let panjang = $("#myTable tbody tr").length;
+      let kode = $("#kodeBarang").val();
+      let nama = $("#namaBarang").val();
+      let gol = $("#golBarang").find(":selected").val();
+      let satuan = $("#satuanBarang").val();
+      let harga = $("#hargaBarang").val();
+      let jumlah = $("#jumlahBarang").val();
+
+      $("tbody").append(
+        "<tr class='" +
+          kode +
+          "' data-nama='" +
+          nama +
+          "' id='id" +
+          panjang +
+          "'><td class='kid" +
+          panjang +
+          "'>" +
+          kode +
+          "</td><td class='nid" +
+          panjang +
+          "'>" +
+          nama +
+          "</td><td class='gid" +
+          panjang +
+          "'>" +
+          gol +
+          "</td><td class='sid" +
+          panjang +
+          "'>" +
+          satuan +
+          "</td><td class='hid" +
+          panjang +
+          "'>" +
+          harga +
+          "</td><td class='jid" +
+          panjang +
+          "'>" +
+          jumlah +
+          '</td><td> <button type="button" data-toggle="modal" data-target="#modalView" class="viewBrg btn btn-outline-primary" id="id' +
+          panjang +
+          '"><i class="bi bi-eye"></i></button>  <button type="button" data-target="#staticBackdrop" class="updateBarang btn btn-outline-info" data-toggle="modal" id="id' +
+          panjang +
+          '" > <i class="bi bi-pencil-square"></i></button> <button type="button" data-toggle="modal" data-target="#exampleModal" id="id' +
+          panjang +
+          '" class="removeBarang btn btn-outline-danger"><i class="bi bi-trash"></i> </button></td></tr>'
+      );
+      // reset();
+    });
+
+    $("tbody").on("click", ".viewBrg", function () {
+      var id = $(this).attr("id");
+      // console.log(id);
+      var currentRow = $(this).closest("tr");
+      // console.log(currentRow);
+
+      var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+      var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+      var col3 = currentRow.find("td:eq(2)").text();
+      var col4 = currentRow.find("td:eq(3)").text();
+      var col5 = currentRow.find("td:eq(4)").text();
+      var col6 = currentRow.find("td:eq(5)").text();
+
+      $(".detKode").text(col1);
+      $(".detNama").text(col2);
+      $(".detGolongan").text(col3);
+      $(".detSatuan").text(col5);
+      $(".detHarga").text(col4);
+      $(".detJumlah").text(col6);
+    });
+
+    $("#tbody").on("click", ".removeBarang", function () {
+      var id = $(this).attr("id");
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        // console.log(id);
+        if (result.isConfirmed) {
+          $(this).closest("tr").remove();
+          Swal.fire("Deleted!", "Your data has been deleted.", "success");
+        }
+      });
+    });
+
+    // $("tbody").on("click", ".updateBarang", function () {
+    //   var id = $(this).parent().parent().attr("id");
+    //   // console.log(id);
+
+    //   var currentRow = $(this).parent().parent().closest("tr");
+    //   // console.log(currentRow);
+
+    //   var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+    //   var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+    //   var col3 = currentRow.find("td:eq(2)").text();
+    //   var col4 = currentRow.find("td:eq(3)").text();
+    //   var col5 = currentRow.find("td:eq(4)").text();
+    //   var col6 = currentRow.find("td:eq(5)").text();
+    //   // console.log(col1);
+
+    //   $("#golBarang").find(":selected").val(col3);
+    //   $("#kodeBarang").text(col1);
+    //   $("#namaBarang").text(col2);
+    //   // $("#golBarang").text(col3);
+    //   $("#satuanBarang").text(col5);
+    //   $("#hargaBarang").text(col4);
+    //   $("#jumlahBarang").text(col6);
+    // });
+
+    // $("#uptdBarang").click(function (id) {
+    //   console.log(id);
+    //   var ids = $(this)
+    //     .parents()
+    //     .parents()
+    //     .parents()
+    //     .parents()
+    //     .parents()
+    //     .children("table")
+    //     .children("tbody")
+    //     .children("tr")
+    //     .attr("id");
+    //   console.log(id);
+    // });
+
+    // function reset() {
+    //   $("#kodeBarang").val("");
+    //   $("#golBarang").find(":selected").val(null);
+    //   $("#namaBarang").val("");
+    //   // $("#golBarang").val(col3);
+    //   $("#satuanBarang").val("");
+    //   $("#hargaBarang").val("");
+    //   $("#jumlahBarang").val("");
+    // }
+
+    // console.log(id);
+    // $("body").on("click", "#uptdBarang", function () {
+    //   var id = $("#myTable #tbody").closest("tr").attr("id");
+
+    //   $("#uptdBarang").click(function () {
+    //     let kode = $("#kodeBarang").val();
+    //     let nama = $("#namaBarang").val();
+    //     let gol = $("#golBarang").find(":selected").val();
+    //     let satuan = $("#satuanBarang").val();
+    //     let harga = $("#hargaBarang").val();
+    //     let jumlah = $("#jumlahBarang").val();
+    //     // console.log(id);
+    //     $(".k" + id).text(kode);
+    //     $(".n" + id).text(nama);
+    //     $(".g" + id).text(gol);
+    //     $(".s" + id).text(satuan);
+    //     $(".h" + id).text(harga);
+    //     $(".j" + id).text(jumlah);
+    //   });
+    // var kode = $(this).parents("tr").find("input[name='edit_email']").val();
+
+    // $(this).parents("tr").find("td:eq(0)").text(name);
+    // $(this).parents("tr").find("td:eq(1)").text(email);
+
+    // $(this).parents("tr").attr("data-name", name);
+    // $(this).parents("tr").attr("data-email", email);
+
+    // $(this).parents("tr").find(".btn-edit").show();
+    // $(this).parents("tr").find(".btn-update").remove();
+    // });
+
+    // $("#tbody").on("click", ".updateBarang", function () {
+    //   var name = $(this).parents("tr").find("input[name='kodeBarang']").val();
+    //   // var email = $(this).parents("tr").find("input[name='edit_email']").val();
+    //   $(this).parents("tr").find("td:eq(0)").text(name);
+    //   // $(this).parents("tr").find("td:eq(1)").text(email);
+
+    //   $(this).parents("tr").attr("nameHere", name);
+    //   // $(this).parents("tr").attr("emailHere", email);
+
+    //   // var id = $(this).attr("id");
+    //   // console.log(id);
+    //   // $("#saveBarang").hide();
+    //   // $("#uptdBarang").show();
+
+    //   // // $(this).closest("tr").remove();
+
+    //   // $("#tbody tr").each(function () {
+    //   //   let currentRow = $(this);
+    //   //   let kode = currentRow.find("td:eq(0)").text();
+    //   //   let nama = currentRow.find("td:eq(1)").text();
+    //   //   let gol = currentRow.find("td:eq(2)").text();
+    //   //   let satuan = currentRow.find("td:eq(3)").text();
+    //   //   let harga = currentRow.find("td:eq(4)").text();
+    //   //   let jumlah = currentRow.find("td:eq(5)").text();
+    //   //   // console.log(kode, nama, gol, satuan, harga, jumlah);
+
+    //   //   $("#kodeBarang").val(kode);
+    //   //   $("#namaBarang").val(nama);
+    //   //   $("#golBarang").val(gol);
+    //   //   $("#satuanBarang").val(satuan);
+    //   //   $("#hargaBarang").val(harga);
+    //   //   $("#jumlahBarang").val(jumlah);
+    //   // });
+
+    //   // $("#uptdBarang").click(function () {
+    //   //   let kode = $("#kodeBarang").val();
+    //   //   let nama = $("#namaBarang").val();
+    //   //   let gol = $("#golBarang").find(":selected").val();
+    //   //   let satuan = $("#satuanBarang").val();
+    //   //   let harga = $("#hargaBarang").val();
+    //   //   let jumlah = $("#jumlahBarang").val();
+    //   //   // console.log(id);
+    //   //   $(".k" + id).text(kode);
+    //   //   $(".n" + id).text(nama);
+    //   //   $(".g" + id).text(gol);
+    //   //   $(".s" + id).text(satuan);
+    //   //   $(".h" + id).text(harga);
+    //   //   $(".j" + id).text(jumlah);
+    //   // });
+    // });
+
+    // $("#btnAdd").on("click", function () {
+    //   let row =
+    //     "<tr> <td>" +
+    //     $("#insert-name").val() +
+    //     "</td> <td>" +
+    //     $("#insert-surname").val() +
+    //     "</td> <td>" +
+    //     "edit" +
+    //     "</td> </tr>";
+    //   $("tbody").append(row);
+
+    //   $('td:contains("edit")')
+    //     .html("<button type='button' class='edit'>" + "edit" + "</button>")
+    //     .on("click", function () {});
+    // });
+
+    //--------------------------------------------------------//
+
+    // $(document).on("click", ".updateBarang", function () {
+    //   var id = $(this).attr("id");
+    //   // console.log(id);
+    //   $("#saveBarang").hide();
+    //   $("#uptdBarang").show();
+    //   // Click function on class '.edit' (your appended button)
+    //   var kode = $(this).parents("tr").find("td:eq(0)").html(); // Search for 'name' depending on this edit button parent.
+    //   var name = $(this).parents("tr").find("td:eq(1)").html(); // Search for 'surname' depending on this edit button parent.
+    //   var rowNumber = $(this).parents("tr").index(); // Get index of this edit button parent 'row'.
+    //   // console.log("a" + rowNumber);
+    //   $("#kodeBarang").val(kode); // Read the name and put it  in '#edit-name' inside '.editArea'.
+    //   $("#namaBarang").val(name); // Read the surname and put it  in '#edit-surname' inside '.editArea'.
+    //   // $(".uptdBarang").attr("for", id); // Store this row index as attribute in '.saveEdits' button to be able to pass it to the other function that saves data.
+    //   // $(".editArea").fadeIn(300); // Show the edit box.
+    // });
+
+    // Function to save data
+    // $("#uptdBarang").click(function () {
+    // id = $(".updateBarang").attr("id");
+    // let kode = $("#kodeBarang").val();
+    // let nama = $("#namaBarang").val();
+    // let gol = $("#golBarang").find(":selected").val();
+    // let satuan = $("#satuanBarang").val();
+    // let harga = $("#hargaBarang").val();
+    // let jumlah = $("#jumlahBarang").val();
+    // console.log(id + "hh");
+    // $(".k" + id).text(kode);
+    // $(".n" + id).text(nama);
+    // $(".g" + id).text(gol);
+    // $(".s" + id).text(satuan);
+    // $(".h" + id).text(harga);
+    // $(".j" + id).text(jumlah);
+    // var rowNumber = parseInt($(this).attr("for")); // Get the row number that we already define in the prev. function.
+    // console.log(rowNumber);
+    // $("td:eq(0)", "tr:eq(" + rowNumber + ")").html($("#kodeBarang").val()); // Update 'td' content depending on the 'tr' index.
+    // $("td:eq(1)", "tr:eq(" + rowNumber + ")").html($("#namaBarang").val()); // Update 'td' content depending on the 'tr' index.
+    // $(".updateBarang").click(function () {
+    // var id = $(this).attr("id");
+    // });
+    // var rowNumber = $(this).attr("id"); // Get the row number that we already define in the prev. function.
+    // console.log(rowNumber);
+    // let kode = $("#kodeBarang").val();
+    // let nama = $("#namaBarang").val();
+    // let gol = $("#golBarang").find(":selected").val();
+    // let satuan = $("#satuanBarang").val();
+    // let harga = $("#hargaBarang").val();
+    // let jumlah = $("#jumlahBarang").val();
+    // // console.log(id);
+    // $(".k" + id).text(kode);
+    // $(".n" + id).text(nama);
+    // $(".g" + id).text(gol);
+    // $(".s" + id).text(satuan);
+    // $(".h" + id).text(harga);
+    // $(".j" + id).text(jumlah);
+    // $("td:eq(0)", "tr:eq(" + (rowNumber + 1) + ")").html(
+    //   $("#kodeBarang").val()
+    // ); // Update 'td' content depending on the 'tr' index.
+    // $("td:eq(1)", "tr:eq(" + (rowNumber + 1) + ")").html(
+    //   $("#namaBarang").val()
+    // ); // Update 'td' content depending on the 'tr' index.
+    //   // $("#uptdBarang").click(function () {
+    // let kode = $("#kodeBarang").val();
+    // let nama = $("#namaBarang").val();
+    // let gol = $("#golBarang").find(":selected").val();
+    // let satuan = $("#satuanBarang").val();
+    // let harga = $("#hargaBarang").val();
+    // let jumlah = $("#jumlahBarang").val();
+    // // console.log(id);
+    // $(".k" + id).text(kode);
+    // $(".n" + id).text(nama);
+    // $(".g" + id).text(gol);
+    // $(".s" + id).text(satuan);
+    // $(".h" + id).text(harga);
+    // $(".j" + id).text(jumlah);
+    // });
+    // });
+
+    // $(".cancel").click(function () {
+    //   // Button to cancel edit.
+    //   $("#edit-name").val(""); // Empty value.
+    //   $("#edit-surname").val(""); // Empty value.
+    //   $(".saveEdits").attr("for", "0"); // Set row number to zero.
+    //   $(".editArea").fadeOut(300); // Hide edit area.
+    // });
+  });
+</script>

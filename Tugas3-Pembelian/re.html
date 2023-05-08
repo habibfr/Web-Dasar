@@ -1,0 +1,107 @@
+<head>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+
+    th,
+    tr {
+      text-align: center;
+      padding: 8px;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #e1e0e0;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    td {
+      text-align: center;
+      padding: 10px;
+    }
+
+    tr:hover {
+      background-color: #7eed82;
+      color: white;
+    }
+  </style>
+</head>
+<!-- <div class="con"> -->
+<table border="1" id="myTable">
+  <tr>
+    <th>kode</th>
+    <th>supplier</th>
+    <th>karyawan</th>
+    <th>jumlah</th>
+    <th>total</th>
+    <th>Action</th>
+  </tr>
+
+  <tr>
+    <td>2023</td>
+    <td>PT X</td>
+    <td>Adi</td>
+    <td>6</td>
+    <td>10</td>
+    <td><button class="view">V</button></td>
+  </tr>
+  <tr>
+    <td>2023</td>
+    <td>PT X</td>
+    <td>Codi</td>
+    <td>6</td>
+    <td>10</td>
+    <td><button class="view">V</button></td>
+  </tr>
+  <tr>
+    <td>2023</td>
+    <td>PT Y</td>
+    <td>Bui</td>
+    <td>8</td>
+    <td>20</td>
+    <td><button class="view">V</button></td>
+  </tr>
+  <tr>
+    <td>2023</td>
+    <td>PT YY</td>
+    <td>Deui</td>
+    <td>8</td>
+    <td>20</td>
+    <td><button class="view">V</button></td>
+  </tr>
+
+  <tr>
+    <td colspan="3">Total</td>
+    <td id="jumlah"></td>
+    <td id="total"></td>
+  </tr>
+</table>
+<!-- </div> -->
+<script>
+  $(document).ready(function () {
+    var jumlah = 0;
+    var total = 0;
+
+    var jumlahBaris = $("#myTable tr").length;
+
+    console.log(jumlahBaris);
+
+    for (let i = 1; i < jumlahBaris; i++) {
+      jumlah += Number($("#myTable tr:eq(" + i + ") td:eq(3)").text());
+      total += Number($("#myTable tr:eq(" + i + ") td:eq(4)").text());
+    }
+
+    $("#jumlah").text(jumlah);
+    $("#total").text(total);
+
+    $(".view").click(function (e) {
+      $("#content").load("pembelian/view.html");
+    });
+  });
+</script>

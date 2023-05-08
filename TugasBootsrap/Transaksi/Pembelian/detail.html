@@ -1,0 +1,50 @@
+<table class="myTableDetail table table-striped text-center table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Kode Barang</th>
+      <th scope="col">Jumlah</th>
+      <th scope="col">Harga</th>
+    </tr>
+  </thead>
+
+  <tbody id="bodyDetail">
+    <tr>
+      <td>M001</td>
+      <td>2</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>M002</td>
+      <td>3</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>M003</td>
+      <td>4</td>
+      <td>75</td>
+    </tr>
+
+    <tr class="bg-danger text-white font-weight-bold h4">
+      <td>Total</td>
+      <td class="totalJumlahDetail"></td>
+      <td class="totalHargaDetail"></td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  $(document).ready(function () {
+    console.log("he");
+    let jumlah = 0;
+    let total = 0;
+    let jumlahBaris = $("#bodyDetail tr").length - 1;
+    for (let i = 0; i < jumlahBaris; i++) {
+      jumlah += Number($("#bodyDetail tr:eq(" + i + ") td:eq(1)").text());
+      total += Number($("#bodyDetail tr:eq(" + i + ") td:eq(2)").text());
+      console.log(jumlah, total);
+    }
+
+    $(".totalJumlahDetail").text(jumlah);
+    $(".totalHargaDetail").text(total);
+  });
+</script>

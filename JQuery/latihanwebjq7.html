@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <form action="">
+      <label for="propinsi">Propinsi</label>
+      <select name="propinsi" id="propinsi">
+        <option value="jabar">jawa barat</option>
+        <option value="jateng">jawa tengah</option>
+        <option value="jatim">jawa timur</option>
+      </select>
+
+      <select name="kota" id="kota">
+        <option value="1">a</option>
+        <option value="2">b</option>
+      </select>
+    </form>
+
+    <script>
+      $(document).ready(function () {
+        $("#propinsi").change(function () {
+          if ($("#propinsi").val() == "jabar") {
+            $("#kota").html(
+              "<option value='1'>bandung</option><option value='2'>cirebon</option>"
+            );
+          } else if ($("#propinsi").val() == "jateng") {
+            $("#kota").html(
+              "<option value='1'>c</option><option value='2'>cc</option>"
+            );
+          } else if ($("#propinsi").val() == "jatim") {
+            $("#kota").html(
+              "<option value='1'>d</option><option value='2'>dd</option>"
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

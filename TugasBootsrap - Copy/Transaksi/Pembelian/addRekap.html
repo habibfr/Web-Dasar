@@ -1,0 +1,368 @@
+<form>
+  <div class="form-group row">
+    <label for="kodeTrx" class="col-sm-1 col-form-label">Kode</label>
+    <span class="ml-4 col-form-label">:</span>
+
+    <div class="col-sm-4">
+      <input
+        type="text"
+        class="form-control"
+        id="kodeTrx"
+        placeholder="T1234"
+      />
+    </div>
+
+    <label for="karyawanTrx" class="col-sm-1 col-form-label">Karyawan</label>
+    <span class="ml-4 col-form-label">:</span>
+    <div class="col-sm-4">
+      <select class="custom-select" id="karyawanTrx">
+        <option value="0">Select Karyawan</option>
+        <option value="1">Ali</option>
+        <option value="2">Budi</option>
+        <option value="3">Ceri</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="tglTrx" class="col-sm-1 col-form-label">Tanggal</label>
+    <span class="ml-4 col-form-label">:</span>
+    <div class="col-sm-4">
+      <input
+        type="text"
+        class="form-control"
+        id="tglTrx"
+        placeholder="12 Descen 2032"
+      />
+    </div>
+
+    <label for="jabatanTrx" class="col-sm-1 col-form-label">Jabatan</label>
+    <span class="ml-4 col-form-label">:</span>
+    <div class="col-sm-4">
+      <input
+        type="text"
+        class="form-control"
+        id="jabatanTrx"
+        placeholder="Admin"
+      />
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="supTrx" class="col-sm-1 col-form-label">Supplier</label>
+    <span class="ml-4 col-form-label">:</span>
+    <div class="col-sm-4">
+      <select class="custom-select" id="supTrx">
+        <option value="0">Select Supplier</option>
+        <option value="1">PT A</option>
+        <option value="2">PT B</option>
+        <option value="3">PT C</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="telTrx" class="col-sm-1 col-form-label">Telepon</label>
+    <span class="ml-4 col-form-label">:</span>
+    <div class="col-sm-4">
+      <input
+        type="tel"
+        class="form-control"
+        id="TelTrx"
+        placeholder="0351-1234145"
+      />
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="alamatTrx" class="col-sm-1 col-form-label">Alamat</label>
+    <span class="ml-4 col-form-label">:</span>
+    <div class="col-sm-4">
+      <input
+        type="text"
+        class="form-control"
+        id="alamatTrx"
+        placeholder="Surabaya"
+      />
+    </div>
+  </div>
+  <div class="form-group row"></div>
+
+  <div class="form-group row text-right">
+    <div class="col-sm-2">
+      <select class="custom-select" id="kodeInput">
+        <option value="0">Kode</option>
+        <option value="M001">M001</option>
+        <option value="M002">M002</option>
+        <option value="M003">M003</option>
+      </select>
+    </div>
+
+    <div class="col-sm-2">
+      <input
+        type="text"
+        class="form-control"
+        id="namaInput"
+        placeholder="Batu"
+      />
+    </div>
+    <div class="col-sm-2">
+      <input
+        type="text"
+        class="form-control"
+        id="satuanInput"
+        placeholder="Pcs"
+      />
+    </div>
+    <div class="col-sm-2">
+      <input
+        type="text"
+        class="form-control"
+        id="hargaInput"
+        placeholder="4000"
+      />
+    </div>
+    <div class="col-sm-2">
+      <input
+        type="number"
+        class="form-control"
+        id="jumlahInput"
+        placeholder="5"
+      />
+    </div>
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-danger" id="saveTrx">Save</button>
+    </div>
+  </div>
+</form>
+
+<table class="myTableDetail table table-striped text-center table-hover">
+  <thead>
+    <tr class="bg-danger text-white">
+      <th scope="col">Kode</th>
+      <th scope="col">Nama</th>
+      <th scope="col">Satuan</th>
+      <th scope="col">Harga</th>
+      <th scope="col">Jumlah</th>
+      <th scope="col">Total</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>M003</td>
+      <td>Gak tau</td>
+      <td>Pcs</td>
+      <td>100</td>
+      <td>5</td>
+      <td>500</td>
+      <td>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          class="removeSup btn btn-outline-danger"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>M002</td>
+      <td>Gak tau</td>
+      <td>Pcs</td>
+      <td>100</td>
+      <td>5</td>
+      <td>500</td>
+      <td>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          class="removeSup btn btn-outline-danger"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <td>M001</td>
+      <td>Gak tau</td>
+      <td>Pcs</td>
+      <td>100</td>
+      <td>5</td>
+      <td>500</td>
+      <td>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          class="removeSup btn btn-outline-danger"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr class="bg-danger text-white font-weight-bold h4">
+      <td colspan="2">Total</td>
+      <td></td>
+      <td class="totalJumlah"></td>
+      <td></td>
+      <td id="totalTrx"></td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
+
+<script>
+  $(document).ready(function () {
+    var grandTotal = 0;
+    $("tbody tr").each(function () {
+      let currentRow = $(this);
+      grandTotal += Number(currentRow.find("td:eq(5)").text());
+      $("#totalTrx").text(grandTotal);
+    });
+
+    let kode = "";
+    let tanggal = "";
+    let tgl = new Date();
+    kode =
+      tgl.getFullYear() +
+      "" +
+      tgl.getMonth() +
+      tgl.getHours() +
+      tgl.getMinutes();
+    tanggal = tgl;
+    $("#kodeTrx").val(kode);
+    $("#tglTrx").val(tanggal);
+
+    $("#supTrx").change(function () {
+      var namaSup = $("#supTrx").find(":selected").val();
+
+      if (namaSup == "1") {
+        $("#telTrx").val("09876544");
+        $("#alamatTrx").val("Surabaya");
+      } else if (namaSup == "2") {
+        $("#telTrx").val("09876512");
+        $("#alamatTrx").val("Bandung");
+      } else if (namaSup == "3") {
+        $("#telTrx").val("09876532");
+        $("#alamatTrx").val("Makasar");
+      }
+    });
+
+    $("#karyawanTrx").change(function () {
+      let namaKar = $("#karyawanTrx").find(":selected").val();
+
+      console.log(namaKar);
+      if (namaKar == "1") {
+        $("#jabatanTrx").val("Admin");
+      } else if (namaKar == "2") {
+        $("#jabatanTrx").val("Supervisor");
+      } else if (namaKar == "3") {
+        $("#jabatanTrx").val("Marketing");
+      }
+    });
+
+    $("#kodeInput").change(function () {
+      let kodeInput = $("#kodeInput").find(":selected").val();
+      let nama = "";
+      let satuan = "";
+      let harga = 0;
+      let jumlah = 0;
+
+      if (kodeInput == "M001") {
+        nama = "Pasir";
+        satuan = "Pcs";
+        harga = 20;
+
+        $("#namaInput").val(nama);
+        $("#satuanInput").val(satuan);
+        $("#hargaInput").val(harga);
+      } else if (kodeInput == "M002") {
+        nama = "Batu";
+        satuan = "Pcs";
+        harga = 40;
+
+        $("#namaInput").val(nama);
+        $("#satuanInput").val(satuan);
+        $("#hargaInput").val(harga);
+      } else if (kodeInput == "M003") {
+        nama = "Semen";
+        satuan = "Pcs";
+        harga = 80;
+
+        $("#namaInput").val(nama);
+        $("#satuanInput").val(satuan);
+        $("#hargaInput").val(harga);
+      }
+    });
+
+    $("#saveTrx").click(function () {
+      var grandTotal = 0;
+
+      let panjang = $("tbody tr").length;
+      console.log(panjang);
+      let kode = $("#kodeInput").val();
+      let nama = $("#namaInput").val();
+      let satuan = $("#satuanInput").val();
+      let harga = $("#hargaInput").val();
+      let jumlah = $("#jumlahInput").val();
+      let total = Number(+harga) * Number(+jumlah);
+      // console.log(total);
+
+      $("tbody").append(
+        "<tr><td>" +
+          kode +
+          "</td><td>" +
+          nama +
+          "</td><td>" +
+          satuan +
+          "</td><td>" +
+          harga +
+          "</td><td>" +
+          jumlah +
+          "</td><td>" +
+          total +
+          '</td><td><button type="button" data-toggle="modal" data-target="#exampleModal" class="removeTrx btn btn-outline-danger" id="' +
+          panjang +
+          '"> <i class="bi bi-trash"></i></button></td></tr'
+      );
+
+      $("tbody tr").each(function () {
+        let currentRow = $(this);
+        grandTotal += Number(currentRow.find("td:eq(5)").text());
+        console.log(total);
+        $("#totalTrx").text(grandTotal);
+      });
+    });
+
+    $("tbody").on("click", ".removeTrx", function () {
+      grandTotal = 0;
+      var id = $(this).attr("id");
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Deleted!", "Your data has been deleted.", "success");
+          $(this).closest("tr").remove();
+          $("tbody tr").each(function () {
+            var currentRow = $(this);
+            grandTotal += Number(currentRow.find("td:eq(5)").text());
+          });
+          $("#totalTrx").text(grandTotal);
+        }
+      });
+    });
+  });
+</script>

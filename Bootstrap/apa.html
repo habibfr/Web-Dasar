@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="title"
+      property="og:title"
+      content="sandorBlog( How to edit a Table row using a Bootstrap Modal Form and jQuery )"
+    />
+    <meta name="type" property="og:type" content="" />
+    <meta name="image" property="og:image" content="" />
+    <meta name="description" property="og:description" content="" />
+    <meta name="author" property="og:author" content="Sandro Fioravanti" />
+
+    <title>
+      sandorBlog( How to edit a Table row using a Bootstrap Modal Form and
+      jQuery )
+    </title>
+    <!-- Custom styles for this template -->
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+
+    <!--Librerie per ajax -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Link che punta al css di lightbox.css -->
+
+    <!--Link che punta al css personalizzato
+<link rel="stylesheet" href="https://www.sandrofioravanti.com/css/product.css">
+
+
+<script src="{asset('js/jquery_v3.3.1.js')}}"></script>-->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.0.js"></script> -->
+    <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+  </head>
+  <body>
+    <!-- marcazione del contenuto -->
+    <!-- Login Modal -->
+
+    <!-- Register Form END -->
+
+    <!-- Page Header -->
+
+    <div
+      class="w-100 p-3 center-div"
+      id="tableContainer"
+      style="position: relative"
+    >
+      <table class="table table-dark" id="mainTable" name="DynamicTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>E-mail</th>
+            <th>Phone</th>
+            <th>Level</th>
+            <th>Cr. date</th>
+            <th>Up. date</th>
+            <th scope="col">
+              <button
+                type="button"
+                class="btn btn-outline-success btn-sm fas fa-toggle-on noUnderlineCustom d-inline disabled"
+              ></button
+              ><button
+                type="button"
+                class="btn btn-outline-warning btn-sm fas fa-toggle-off noUnderlineCustom d-inline disabled"
+              ></button
+              ><button
+                type="button"
+                class="btn btn-outline-danger btn-sm far fa-trash-alt noUnderlineCustom d-inline disabled"
+              ></button>
+            </th>
+            <th scope="col"><input type="checkbox" disabled="disabled" /></th>
+          </tr>
+        </thead>
+        <tbody id="dinamicTable">
+          <tr id="tr-1" class="alert alert-warning">
+            <td>1</td>
+            <td>Lilly</td>
+            <td>Vivienne</td>
+            <td>giuseppe.keeling@example.com</td>
+            <td>221.674.1644</td>
+            <td>0</td>
+            <td>2019-05-07 19:56:04</td>
+            <td>2019-05-19 11:13:02</td>
+            <td id="td-1">
+              <!-- Button change status -->
+              <button
+                type="button"
+                class="btn btn-link fas fa-toggle-off noUnderlineCustom disabled"
+              ></button
+              ><!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-sm btn-primary editingTRbutton fas fa-pencil-alt noUnderlineCustom text-white"
+                data-toggle="modal"
+                data-target="#editModal"
+              ></button
+              ><button
+                type="button"
+                class="btn btn-sm btn-danger far fa-trash-alt noUnderlineCustom text-white disabled"
+              ></button>
+            </td>
+            <td><input type="checkbox" disabled="disabled" /></td>
+          </tr>
+          <tr id="tr-2" class="alert alert-danger">
+            <td>2</td>
+            <td>Mireille</td>
+            <td>Felipa</td>
+            <td>jeanie84@example.org</td>
+            <td>796.603.8789 x91695</td>
+            <td>0</td>
+            <td>2019-05-07 19:56:04</td>
+            <td>2019-05-18 19:22:51</td>
+            <td id="td-2">
+              <!-- Button change status -->
+              <button
+                type="button"
+                class="btn btn-link fas fa-redo-alt noUnderlineCustom disabled"
+              ></button>
+            </td>
+            <td><input type="checkbox" disabled="disabled" /></td>
+          </tr>
+
+          <tr id="tr-4" class="alert alert-warning">
+            <td>4</td>
+            <td>Molly</td>
+            <td>Linnie</td>
+            <td>rasheed30@example.net</td>
+            <td>(580) 822-4335</td>
+            <td>0</td>
+            <td>2019-05-07 19:56:04</td>
+            <td>2019-05-19 10:14:35</td>
+            <td id="td-4">
+              <!-- Button change status -->
+              <button
+                type="button"
+                class="btn btn-link fas fa-toggle-off noUnderlineCustom disabled"
+              ></button
+              ><!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-sm btn-primary editingTRbutton fas fa-pencil-alt noUnderlineCustom text-white"
+                data-toggle="modal"
+                data-target="#editModal"
+              ></button
+              ><button
+                type="button"
+                class="btn btn-sm btn-danger far fa-trash-alt noUnderlineCustom text-white disabled"
+              ></button>
+            </td>
+            <td><input type="checkbox" disabled="disabled" /></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ------------------ Modal ------------------ -->
+    <div
+      class="modal fade"
+      id="editModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="ModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="ModalLabel">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form
+              action=""
+              method="POST"
+              enctype="multipart/form-data"
+              method="POST"
+              id="ModalForm"
+            >
+              <input
+                type="hidden"
+                name="_token"
+                value="x69ZyrUU0dB2R3MQup1nPSO2BmKoNvtymxYQWPAN"
+              />
+              <input type="hidden" id="editId" value="" />
+              <div class="form-group">
+                <label for="editName">First Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  id="editName"
+                  placeholder="First Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="editSurname">Surname</label>
+                <input
+                  type="text"
+                  name="surname"
+                  class="form-control"
+                  id="editSurname"
+                  placeholder="Surname"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="editEmail">E-mail address</label>
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  id="editEmail"
+                  placeholder="name@example.com"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="editPhone">Mobile Phone</label>
+                <input
+                  type="tel"
+                  name="mobilePhone"
+                  class="form-control"
+                  id="editPhone"
+                  placeholder="+44"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="editLevel">Level</label>
+                <select class="form-control" id="editLevel" name="level">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="modal-footer">
+                <a class="btn btn-secondary" data-dismiss="modal">Close</a>
+                <button
+                  type="button"
+                  id="saveModalButton"
+                  class="btn btn-primary"
+                  data-dismiss="modal"
+                >
+                  Save changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(function () {
+        //Take the data from the TR during the event button
+        $("table").on("click", "button.editingTRbutton", function (ele) {
+          //the <tr> variable is use to set the parentNode from "ele"
+          var tr = ele.target.parentNode.parentNode;
+
+          //I get the value from the cells (td) using the parentNode (var tr)
+          var id = tr.cells[0].textContent;
+          var firstName = tr.cells[1].textContent;
+          var surname = tr.cells[2].textContent;
+          var email = tr.cells[3].textContent;
+          var phone = tr.cells[4].textContent;
+          var level = tr.cells[5].textContent;
+
+          //Prefill the fields with the gathered information
+          $("h5.modal-title").html("Edit Admin Data: " + firstName + "");
+          $("#editName").val(firstName);
+          $("#editSurname").val(surname);
+          $("#editEmail").val(email);
+          $("#editPhone").val(phone);
+          $("#editId").val(id);
+          $("#editLevel").val(level).attr("selected", "selected");
+
+          //If you need to update the form data and change the button link
+          $("form#ModalForm").attr(
+            "action",
+            window.location.href + "/update/" + id
+          );
+          $("a#saveModalButton").attr(
+            "href",
+            window.location.href + "/update/" + id
+          );
+        });
+      });
+
+      $(function () {
+        //Click Event listener waiting for the click from the modal save button
+        $("div.modal-footer").on(
+          "click",
+          "button#saveModalButton",
+          function () {
+            //Get all information from the form field
+            var id = $("#editId").attr("value");
+            var firstName = $("#editName").val();
+            var surname = $("#editSurname").val();
+            var email = $("#editEmail").val();
+            var phone = $("#editPhone").val();
+            var level = $("#editLevel").val();
+
+            //Set back the information on the table
+            $("#tr-" + id + " td:nth-child(2)").text(firstName);
+            $("#tr-" + id + " td:nth-child(3)").text(surname);
+            $("#tr-" + id + " td:nth-child(4)").text(email);
+            $("#tr-" + id + " td:nth-child(5)").text(phone);
+            $("#tr-" + id + " td:nth-child(6)").text(level);
+          }
+        );
+      });
+    
+    </script>
+  </body>
+</html>

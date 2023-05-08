@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <form action="">
+      Kode : <input type="text" name="kode" id="kode" /><br />
+      Nama : <input type="text" name="nama" id="nama" /><br />
+      Satuan : <input type="text" name="satuan" id="satuan" /><br />
+    </form>
+    <button id="save">Save</button>
+    <div id="hasil"></div>
+
+    <script>
+      $(document).ready(function () {
+        $("#save").click(function () {
+          var kode = $("#kode").val();
+          var nama = $("#nama").val();
+          var satuan = $("#satuan").val();
+
+          $("#hasil").text(kode + " " + nama + " " + satuan);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<div class="container-fluid my-2">
+  <div class="h1 text-center">Penjualan</div>
+  <button
+    type="button"
+    class="btn addJual btn-danger px-3 my-2"
+    data-toggle="modal"
+    data-target="#modalAddJual"
+  >
+    <i class="bi bi-plus-lg"></i>
+  </button>
+  <div class="contentJual my-4"></div>
+</div>
+
+<div
+  class="modal fade bd-example-modal-lg"
+  id="modalAddJual"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalRekapViewLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalRekapViewLabel">Tambah Pembelian</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModalAddJual"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $(".contentJual").load("Transaksi/Penjualan/dataJual.html");
+
+    $(".addJual").click(function () {
+      $("#bodyModalAddJual").load("Transaksi/Penjualan/addJual.html");
+    });
+    // $(".addJual").click(function () {
+    //   $(".contentJual").load("Transaksi/Penjualan/addJual.html");
+    // });
+  });
+</script>

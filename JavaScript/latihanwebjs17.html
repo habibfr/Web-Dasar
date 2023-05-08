@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pilih Elemen</title>
+  </head>
+  <body>
+    <label for="Propinsi">Propinsi</label>
+    <select name="Propinsi" id="Propinsi" onchange="ubah()">
+      <option value="Jawa Barat">Jawa Barat</option>
+      <option value="Jawa Tengah">Jawa Tengah</option>
+      <option value="Jawa Timur">Jawa Timur</option>
+    </select>
+
+    <label for="Kota">Kota</label>
+
+    <select name="kota" id="kota">
+      <option value="1">Bandung</option>
+      <option value="2">Cirebon</option>
+      <option value="3">Bekasi</option>
+    </select>
+
+    <script>
+      function ubah() {
+        if (document.getElementById("Propinsi").value == "Jawa Barat") {
+          document.getElementById("kota").innerHTML =
+            "<option value='1'>Bekasi</option>";
+        } else if (document.getElementById("Propinsi").value == "Jawa Tengah") {
+          document.getElementById("kota").innerHTML =
+            "<option value='2'>Semarang</option>";
+        } else if (document.getElementById("Propinsi").value == "Jawa Timur") {
+          document.getElementById("kota").innerHTML =
+            "<option value='3'>Surabaya</option>";
+        }
+      }
+    </script>
+  </body>
+</html>

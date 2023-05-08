@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        vertical-align: bottom;
+      }
+
+      th,
+      td {
+        padding: 5px;
+        text-align: left;
+      }
+
+      tr:nth-child(even) {
+        background-color: #d6d3d3;
+      }
+
+      tr:hover {
+        background-color: aqua;
+      }
+
+      th {
+        background-color: #4caf50;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="overflow-x: auto">
+      <table width="100%" height="100">
+        <a href="Insert.html"><button>+</button></a>
+        <caption>
+          Master barang
+        </caption>
+        <tr>
+          <th>Kode</th>
+          <th>Gol</th>
+          <th style="width: 50%">Nama</th>
+          <th>Satuan</th>
+          <th>Harga</th>
+          <th>Action</th>
+        </tr>
+
+        <tr>
+          <td>M001</td>
+          <td>Komputer</td>
+          <td>CPU</td>
+          <td>pcs</td>
+          <td align="right">2000</td>
+          <td align="right">
+            <a href="View.html"><button>V</button></a>
+            <a href="update.html"><button>U</button></a> <button>X</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>M002</td>
+          <td>Komputer</td>
+          <td>VGA</td>
+          <td>pcs</td>
+          <td align="right">1000</td>
+          <td align="right">
+            <a href="View.html"><button>V</button></a>
+            <a href="update.html"><button>U</button></a> <button>X</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>M003</td>
+          <td>HP</td>
+          <td>SAMSUNG</td>
+          <td>pcs</td>
+          <td align="right">4000</td>
+          <td align="right">
+            <a href="View.html"><button>V</button></a>
+            <a href="update.html"><button>U</button></a> <button>X</button>
+          </td>
+        </tr>
+        <tr>
+          <td>M001</td>
+          <td>HP</td>
+          <td>LENOVO</td>
+          <td>pcs</td>
+          <td align="right">7000</td>
+          <td align="right">
+            <a href="View.html"><button>V</button></a>
+            <a href="update.html"><button>U</button></a> <button>X</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

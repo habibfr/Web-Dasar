@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      #detail,
+      #rekap,
+      .add1 {
+        cursor: pointer;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background: #1cc243;
+        color: white;
+        margin-right: 10px;
+      }
+
+      .container {
+        margin: 20px auto;
+      }
+    </style>
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+  <body>
+    <h1>Pembelian - Rekap</h1>
+    <span id="rekap">Rekap</span>
+    <span id="detail">Detail</span>
+    <span class="add1">+</span>
+
+    <div class="container">
+      <div id="content"></div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#content").load("re.html");
+        $("#rekap").click(function () {
+          $("#content").load("re.html");
+        });
+
+        $("#detail").click(function () {
+          $("#content").load("pembelian/detail.html");
+        });
+
+        $(".add1").click(function (e) {
+          $("#content").load("add/add.html");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <p>table js</p>
+
+    <form action="">
+      <label for="kode">Kode :</label>
+      <input type="text" id="kode" />
+
+      <label for="nama">Nama :</label>
+      <input type="text" id="nama" />
+
+      <label for="satuan">Satuan :</label>
+      <input type="text" id="satuan" />
+
+      <label for="harga">harga :</label>
+      <input type="text" id="harga" />
+
+      <br />
+      <button type="button" id="save">save</button>
+    </form>
+
+    <table border="1">
+      <theader>
+        <tr>
+          <th>Kode</th>
+          <th>Nama</th>
+          <th>Satuan</th>
+          <th>Harga</th>
+          <th>action</th>
+        </tr>
+      </theader>
+      <tbody id="tbody"></tbody>
+    </table>
+
+    <br />
+    <label for="t">Total : </label><label for="total" id="total">0</label>
+  </body>
+
+  <script>
+    $(document).ready(function () {
+      var total = 0;
+
+      $("#save").click(function () {
+        total = 0;
+        var panjang = $("#tbody tr").length;
+        var kode = $("#kode").val();
+        var nama = $("#nama").val();
+        var satuan = $("#satuan").val();
+        var harga = $("#harga").val();
+        $("#tbody").append(
+          "<tr><td>" +
+            kode +
+            "</td><td>" +
+            nama +
+            "</td><td>" +
+            satuan +
+            "</td><td>" +
+            harga +
+            '</td><td><button id="id' +
+            panjang +
+            '" class="remove">x</button></tr>'
+        );
+        console.log(panjang);
+        $("#tbody tr").each(function () {
+          var currentRow = $(this);
+          total += Number(currentRow.find("td:eq(3)").text());
+          // console.log(total);
+          $("#total").text(total);
+        });
+      });
+
+      $("#tbody").on("click", ".remove", function () {
+        total = 0;
+        var id = $(this).attr("id");
+        console.log(id);
+        $(this).closest("tr").remove();
+        $("#tbody tr").each(function () {
+          var currentRow = $(this);
+          total += Number(currentRow.find("td:eq(3)").text());
+          console.log(total);
+        });
+
+        $("#total").text(total);
+      });
+    });
+  </script>
+</html>

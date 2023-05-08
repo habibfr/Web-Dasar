@@ -1,0 +1,310 @@
+<!-- ------------------              sandorBlog(Modal)           ------------------ -->
+<!-- ------------------         www.sandrofioravanti.it          ------------------ -->
+<!-- ------------------                 Modal                    ------------------ -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <!-- <link rel="stylesheet" href="sweetalert2.min.css" /> -->
+  </head>
+  <body>
+    <div class="h1 text-center">Barang</div>
+
+    <button
+      type="button"
+      class="btn btn-add btn-danger px-3 my-2"
+      data-toggle="modal"
+      data-target="#staticBackdrop"
+    >
+      <i class="bi bi-plus-lg"></i>
+    </button>
+
+    <div class="wrap">
+      <table
+        id="myTable"
+        class="table text-center table-hover table-striped mb-0 bg-white"
+      >
+        <thead class="bg-light">
+          <tr>
+            <th>Kode</th>
+            <th>Nama</th>
+            <th>Golongan</th>
+            <th>Satuan</th>
+            <th>Harga</th>
+            <th>jumlah</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          <tr>
+            <td>M002</td>
+            <td>Air</td>
+            <td>Alam</td>
+            <td>Pcs</td>
+            <td>20</td>
+            <td>90</td>
+            <td>
+              <button
+                type="button"
+                data-toggle="modal"
+                data-target="#modalView"
+                class="viewBrg btn btn-outline-primary"
+              >
+                <i class="bi bi-eye"></i>
+              </button>
+              <button
+                type="button"
+                data-target="#staticBackdropSup"
+                class="updateBarang editingTRbutton btn btn-outline-info"
+                data-toggle="modal"
+              >
+                <i class="bi bi-pencil-square"></i>
+              </button>
+              <button
+                type="button"
+                data-toggle="modal"
+                data-target="#exampleModal"
+                class="removeBarang btn btn-outline-danger"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-backdrop="static"
+        tabindex="-1"
+        data-keyboard="false"
+        aria-labelledby="modalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header border-bottom-0">
+              <h5 class="modal-title" id="modalLabel">Tambah Barang</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form>
+              <div class="modal-body">
+                <form>
+                  <div class="form-group">
+                    <label for="kodeBarang">Kode</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="kodeBarang"
+                      placeholder="M001"
+                      name="kodeBarang"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="namaBarang">Nama</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="namaBarang"
+                      placeholder="Batu"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="golBarang">Golongan</label>
+                    <select class="form-control" id="golBarang">
+                      <option value="0">Pilih Golongan</option>
+                      <option value="RAM">RAM</option>
+                      <option value="PC">Pcs</option>
+                      <option value="VGA">VGA</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="satuanBarang">Satuan</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="satuanBarang"
+                      placeholder="Pcs"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col">
+                        <label for="hargaBarang">Harga</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="hargaBarang"
+                          placeholder="10000"
+                        />
+                      </div>
+                      <div class="col">
+                        <label for="jumlahBarang">Jumlah</label>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="jumlahBarang"
+                          placeholder="5"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  id="saveBarang"
+                  data-dismiss="modal"
+                >
+                  Add
+                </button>
+                <button
+                  type="button"
+                  class="btn updt btn-danger"
+                  id="uptdBarang"
+                  data-dismiss="modal"
+                >
+                  Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalView"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="modalViewLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalViewLabel">Detail Barang</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card text-center">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item detKode">Kode</li>
+                <li class="list-group-item detNama">Nama</li>
+                <li class="list-group-item detGolongan">Golongan</li>
+                <li class="list-group-item detSatuan">Satuan</li>
+                <li class="list-group-item detHarga">Harga</li>
+                <li class="list-group-item detJumlah">Jumlah</li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      $(function () {
+        console.log("as");
+        //Take the data from the TR during the event button
+        $("table").on("click", ".updateBarang", function (ele) {
+          console.log("h");
+          //the <tr> variable is use to set the parentNode from "ele
+          var tr = ele.target.parentNode.parentNode;
+
+          //I get the value from the cells (td) using the parentNode (var tr)
+          var id = tr.cells[0].textContent;
+          var nama = tr.cells[1].textContent;
+          var gol = tr.cells[2].textContent;
+          var satuan = tr.cells[3].textContent;
+          var harga = tr.cells[4].textContent;
+          var jumlah = tr.cells[5].textContent;
+          console.log(id, nama, gol, satuan, harga, jumlah);
+
+          //Prefill the fields with the gathered information
+          $("h5.modal-title").html("Edit Admin Data: " + firstName);
+          $("#editName").val(firstName);
+          $("#editSurname").val(surname);
+          $("#editEmail").val(email);
+          $("#editPhone").val(phone);
+          $("#editId").val(id);
+          $("#editLevel").val(level).attr("selected", "selected");
+
+          //If you need to update the form data and change the button link
+          $("form#ModalForm").attr(
+            "action",
+            window.location.href + "/update/" + id
+          );
+          $("a#saveModalButton").attr(
+            "href",
+            window.location.href + "/update/" + id
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

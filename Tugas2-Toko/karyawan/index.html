@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karyawan</title>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .header {
+      background-color: #e2e2e2;
+      text-align: center;
+    }
+
+    h1 {
+      color: red;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    .container {
+      margin: auto;
+      /* padding: 16px; */
+      max-width: 840px;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+      max-width: 900px;
+      margin: 20px auto;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .head {
+      background-color: #f1f1f1;
+      text-align: center;
+      border: 5px red;
+      border-style: dotted;
+      display: inline-block;
+      padding: 20px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th,
+    tr {
+      text-align: left;
+      padding: 8px;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #e1e0e0;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 7px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-x {
+      background-color: #f44336;
+    }
+
+    .btn-u {
+      background-color: #ff9800;
+    }
+
+    .btn-v {
+      background-color: #2196f3;
+    }
+
+    .btn-add {
+      background-color: #4caf50;
+      color: white;
+      padding: 3px 40px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: xx-large;
+    }
+
+    footer {
+      background-color: #e2e2e2;
+      text-align: center;
+      padding: 10px;
+      position: absolute;
+      bottom: 0;
+      display: block;
+      width: 100%;
+    }
+
+    .footer {
+      color: rgb(200, 202, 204);
+      text-transform: uppercase;
+    }
+  </style>
+
+  <body>
+    <div class="header">
+      <h1 class="head">NINO CHAN STORE</h1>
+    </div>
+
+    <div class="topnav">
+      <a href="../index.html">Home</a>
+      <a href="../barang/index.html">Barang</a>
+      <a class="active" href="index.html">Karyawan</a>
+      <a href="../supplier/index.html">Supplier</a>
+    </div>
+
+    <div class="container">
+      <h2>Master Karyawan</h2>
+
+      
+      <table border="1" bordercolor="black" width="100%" height="100">
+        <a href="Insert.html"><button class="btn-add">+</button></a>
+        <tr bgcolor="#345273">
+          <th>Kode</th>
+          <th>Nama</th>
+          <th>Jabatan</th>
+          <th>Telp</th>
+          <th>email</th>
+          <th>password</th>
+          <th>Action</th>
+        </tr>
+
+        <tr>
+          <td>K001</td>
+          <td>Agus</td>
+          <td>admin</td>
+          <td>098765432</td>
+          <td>agus@gmail.com</td>
+          <td>1234</td>
+          <td align="right">
+            <a href="update.html"><button class="btn-u">U</button></a>
+            <button class="btn-x">X</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>K002</td>
+          <td>Budi</td>
+          <td>operator</td>
+          <td>094765432</td>
+          <td>budi@gmail.com</td>
+          <td>1234</td>
+          <td align="right">
+            <a href="update.html"><button class="btn-u">U</button></a>
+            <button class="btn-x">X</button>
+          </td>
+        </tr>
+
+        <tr>
+          <td>K003</td>
+          <td>ceri</td>
+          <td>supervisor</td>
+          <td>093765432</td>
+          <td>ceris@gmail.com</td>
+          <td>1234</td>
+          <td align="right">
+            <a href="update.html"><button class="btn-u">U</button></a>
+            <button class="btn-x">X</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <footer>
+      <p class="footer">by NINO CHAN.</p>
+    </footer>
+  </body>
+</html>

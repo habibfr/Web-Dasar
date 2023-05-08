@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        /* background-color: #dedede; */
+      }
+      li.coba {
+        background-color: rgb(67, 0, 212);
+        color: white;
+      }
+      li:hover {
+        background-color: rgb(23, 255, 240);
+        color: black;
+        cursor: pointer;
+      }
+      li {
+        float: left;
+        padding: 10px 20px;
+        background-color: beige;
+      }
+      .coba1 {
+        position: relative;
+        display: inline-block;
+      }
+
+      .coba1-content {
+        display: none;
+        position: absolute;
+        background-color: red;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 99;
+        padding: 40px 70px;
+      }
+
+      .coba1-content:hover {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li class="coba">Master Barang</li>
+      <li class="coba1">Master Karyawan</li>
+
+      <div class="coba1-content">
+        <p>Hello World</p>
+      </div>
+
+      <li>Master Supplier</li>
+    </ul>
+  </body>
+</html>

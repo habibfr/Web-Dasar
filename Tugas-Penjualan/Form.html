@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karyawan</title>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .header {
+      background-color: #e2e2e2;
+      text-align: center;
+    }
+
+    h1 {
+      color: red;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .container {
+      margin: auto;
+      /* padding: 16px; */
+      max-width: 840px;
+      text-align: center;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .head {
+      background-color: #f1f1f1;
+      text-align: center;
+      border: 5px red;
+      border-style: dotted;
+      display: inline-block;
+      padding: 20px;
+    }
+
+    label {
+      float: left;
+      margin: 10px 0;
+      margin-bottom: 4px;
+      text-transform: capitalize;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    #karyawan,
+    #kode1 {
+      width: 100%;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      padding: 9px 10px;
+    }
+
+    input[type="submit"] {
+      width: 100px;
+      text-transform: capitalize;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .btn {
+      text-align: right;
+      margin: 10px 0 40px 0;
+    }
+
+    .btn-save {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: medium;
+    }
+
+    .btn-cancel {
+      background-color: #a2a4a2;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: medium;
+    }
+
+    footer {
+      background-color: #e2e2e2;
+      text-align: center;
+      padding: 10px;
+      /* position: absolute; */
+      bottom: 0;
+      display: block;
+      width: 100%;
+    }
+
+    .footer {
+      color: rgb(200, 202, 204);
+      text-transform: uppercase;
+    }
+  </style>
+
+  <body>
+    <div class="header">
+      <h1 class="head">NINO CHAN STORE</h1>
+    </div>
+
+    <div class="topnav">
+      <a href="../index.html">Home</a>
+      <a href="../barang/index.html">Barang</a>
+      <a class="active" href="index.html">Karyawan</a>
+      <a href="../supplier/index.html">Supplier</a>
+    </div>
+
+    <div class="container">
+      <h2>Master Karyawan</h2>
+
+      <form action="index.html">
+        <label for="kode">Kode</label><br />
+        <input type="text" name="kode" id="kode" placeholder="1234" /><br />
+
+        <label for="tgl">Tanggal</label><br />
+        <input type="text" name="tgl" id="tgl" placeholder="20220201" /><br />
+
+        <label for="konsumen">Konsumen</label><br />
+        <input
+          type="text"
+          name="konsumen"
+          id="konsumen"
+          placeholder="didi"
+        /><br />
+
+        <label for="karyawan">Karyawan</label><br />
+        <select name="karyawan" id="karyawan" onchange="cekJabatan()">
+          <option value="0">Pilih karyawan</option>
+          <option value="1">ALI</option>
+          <option value="2">Budi</option>
+          <option value="3">Ceri</option>
+        </select>
+        <br />
+
+        <label for="jabatan">jabatan</label><br />
+        <input
+          type="text"
+          name="jabatan"
+          id="jabatan"
+          placeholder="Admin"
+        /><br />
+
+        <div class="btn">
+          <input class="btn-save" type="submit" name="save" value="simpan" />
+          <input type="submit" class="btn-cancel" name="cancel" value="batal" />
+        </div>
+      </form>
+
+      <form action="">
+        <label for="kode">Kode</label><br />
+        <select name="kode" id="kode1" onchange="cekKode()">
+          <option value="0">Kode Barang</option>
+          <option value="123">123</option>
+          <option value="456">456</option>
+          <option value="789">789</option>
+        </select>
+
+        <label for="kode">Nama</label><br />
+        <input type="text" name="nama" id="nama" placeholder="habib" />
+
+        <label for="kode">Satuan</label><br />
+        <input type="text" name="satuan" id="satuan" placeholder="pcs" />
+
+        <label for="kode">Harga</label><br />
+        <input type="text" name="harga" id="harga" placeholder="1000" />
+
+        <label for="kode">Jumlah</label><br />
+        <input type="text" name="jumlah" id="jumlah" placeholder="10000" />
+
+        <br />
+        <br />
+        <input type="button" onclick="tambahData()" value="Submit" />
+      </form>
+
+      <h2>Data</h2>
+
+      <table
+        border="1"
+        bordercolor="black"
+        width="100%"
+        height="100"
+        id="table1"
+      >
+        <tr bgcolor="#345273">
+          <th>Kode</th>
+          <th>Nama</th>
+          <th>Sataun</th>
+          <th>Harga</th>
+          <th>Jumlah</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </table>
+      <p id="pp">Total</p>
+    </div>
+
+    <br />
+    <br />
+
+    <footer>
+      <p class="footer">by NINO CHAN.</p>
+    </footer>
+  </body>
+
+  <script>
+    var kode = document.getElementById("kode");
+    var data = new Date();
+    grandTotal = 0;
+
+    kode.value =
+      "K" +
+      data.getFullYear() +
+      data.getMonth() +
+      data.getHours() +
+      data.getMinutes() +
+      data.getSeconds();
+
+    var tgl = document.getElementById("tgl");
+
+    tgl.value =
+      data.getFullYear() + "-" + data.getMonth() + "-" + data.getDate();
+
+    function cekJabatan() {
+      var karyawan = document.getElementById("karyawan").value;
+
+      if (karyawan == 123) {
+        document.getElementById("jabatan").value = "Admin";
+      } else if (karyawan == 2) {
+        document.getElementById("jabatan").value = "Operator";
+      } else if (karyawan == 3) {
+        document.getElementById("jabatan").value = "Supervisor";
+      } else {
+        document.getElementById("jabatan").value = "";
+      }
+    }
+
+    function cekKode() {
+      var kode1 = document.getElementById("kode1").value;
+      console.log(kode1);
+      if (kode1 == 123) {
+        document.getElementById("nama").value = "Pensil";
+        document.getElementById("satuan").value = "pcs";
+        document.getElementById("harga").value = "1000";
+      } else if (kode1 == 456) {
+        document.getElementById("nama").value = "Buku";
+        document.getElementById("satuan").value = "pcs";
+        document.getElementById("harga").value = "3000";
+      } else if (kode1 == 789) {
+        document.getElementById("nama").value = "Tas";
+        document.getElementById("satuan").value = "pcs";
+        document.getElementById("harga").value = "5000";
+      }
+    }
+
+    var table = document.getElementById("table1");
+
+    var grand = 0;
+    function tambahData() {
+      var kode1 = document.getElementById("kode1").value;
+      var nama = document.getElementById("nama").value;
+      var satuan = document.getElementById("satuan").value;
+      var harga = document.getElementById("harga").value;
+      var jumlah = document.getElementById("jumlah").value;
+      var total = harga * jumlah;
+      // console.log(total);
+      grand += total;
+      // console.log(grand);
+
+      var row = table.insertRow(1);
+      var cell1 = row.insertCell(0);
+      var cell2 = row.insertCell(1);
+      var cell3 = row.insertCell(2);
+      var cell4 = row.insertCell(3);
+      var cell5 = row.insertCell(4);
+      var cell6 = row.insertCell(5);
+      var cell7 = row.insertCell(6);
+
+      cell1.innerHTML = kode1;
+      cell3.innerHTML = satuan;
+      cell4.innerHTML = harga;
+      cell5.innerHTML = jumlah;
+      cell6.innerHTML = total;
+      cell7.innerHTML =
+        '<button class="btn-x" onClick="hapusData(this)">X</button>';
+
+      document.getElementById("pp").innerHTML = "Total : " + grand;
+    }
+
+    var totaal = 0;
+    function hapusData(btn) {
+      // for (var i = 1; i < document.getElementById("table1").rows.length; i++) {
+      //   var x = document.getElementById("table1").rows[i].cells;
+      //   total += Number(x[5].innerHTML);
+      // }
+
+      // document.getElementById("p").innerHTML = "Total : " + total;
+      // grand -= Number(table.rows[1].cells[5].innerHTML);
+      // document.getElementById("pp").innerHTML = "Total : " + grand;
+
+      var row = btn.parentNode.parentNode;
+      row.parentNode.removeChild(row);
+      console.log(table.rows[1]);
+
+      var total = 0;
+
+      for (var i = 1; i < document.getElementById("table1").rows.length; i++) {
+        var x = document.getElementById("table1").rows[i].cells;
+        total += Number(x[5].innerHTML);
+      }
+
+      document.getElementById("pp").innerHTML = "Total : " + total;
+    }
+
+    console.log(grand);
+  </script>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+  
+  <p>Selamat datang jquery</p>
+  <h1 id="x">Selamat datang jquery</h1>
+  <h2 class="y">Selamat datang jquery</h2>
+
+  <script>
+    $(document).ready(function(){
+      $("p").text("akses element html di jquery");
+      $("#x").text("akses id di jquery");
+      $(".y").text("akses class di jquery");
+    })
+  </script>
+</body>
+</html>

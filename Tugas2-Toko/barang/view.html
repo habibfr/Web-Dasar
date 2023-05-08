@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Master Barang</title>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .header {
+      background-color: #e2e2e2;
+      text-align: center;
+    }
+
+    h1 {
+      color: red;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 60px 0 20px 0;
+    }
+
+    .container {
+      margin: auto;
+      /* padding: 16px; */
+      max-width: 840px;
+      text-align: center;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+      max-width: 900px;
+      margin: 10px auto;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .head {
+      background-color: #f1f1f1;
+      text-align: center;
+      border: 5px red;
+      border-style: dotted;
+      display: inline-block;
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      margin: 40px auto;
+    }
+
+    tr,
+    td {
+      margin: 100px;
+      padding: 10px 20px;
+      background-color: aquamarine;
+      border-radius: 10px;
+      /* border: 1px solid black; */
+    }
+
+    .judul {
+      text-transform: capitalize;
+      font-size: medium;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    .t2 {
+      text-align: center;
+      width: 20px;
+      font-weight: bold;
+    }
+
+    .value {
+      font-weight: bold;
+    }
+    .value:hover {
+      background-color: aqua;
+    }
+
+    .btn {
+      text-align: right;
+    }
+
+    .btn-save {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      margin: auto;
+      border: none;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: medium;
+      /* width: 100%; */
+      text-transform: capitalize;
+    }
+
+    .btn-save:hover {
+      background-color: #46b94a;
+    }
+
+    footer {
+      background-color: #e2e2e2;
+      text-align: center;
+      padding: 10px;
+      position: absolute;
+      bottom: 0;
+      display: block;
+      width: 100%;
+    }
+
+    .footer {
+      color: rgb(200, 202, 204);
+      text-transform: uppercase;
+    }
+  </style>
+
+  <body>
+    <div class="header">
+      <h1 class="head">NINO CHAN STORE</h1>
+    </div>
+
+    <div class="topnav">
+      <a href="../index.html">Home</a>
+      <a class="active" href="index.html">Barang</a>
+      <a href="../karyawan/index.html">Karyawan</a>
+      <a href="../supplier/index.html">Supplier</a>
+    </div>
+
+    <div class="container">
+      <h2>Master Barang</h2>
+
+      <form action="index.html">
+        <table>
+          <tr>
+            <td class="judul">Kode</td>
+            <td class="t2">:</td>
+            <td class="value">B001</td>
+          </tr>
+          <tr>
+            <td class="judul">Golongan</td>
+            <td class="t2">:</td>
+            <td class="value">Komputer</td>
+          </tr>
+          <tr>
+            <td class="judul">Nama</td>
+            <td class="t2">:</td>
+            <td class="value">VGA</td>
+          </tr>
+          <tr>
+            <td class="judul">Satuan</td>
+            <td class="t2">:</td>
+            <td class="value">Pcs</td>
+          </tr>
+          <tr>
+            <td class="judul">Harga</td>
+            <td class="t2">:</td>
+            <td class="value">5000</td>
+          </tr>
+        </table>
+
+        <div class="btn">
+          <input class="btn-save" type="submit" name="save" value="simpan" />
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      <p class="footer">by NINO CHAN.</p>
+    </footer>
+  </body>
+</html>

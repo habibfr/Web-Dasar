@@ -1,0 +1,111 @@
+<div class="container-fluid my-2">
+  <div class="h1 text-center">Pembelian</div>
+  <!-- <button type="button" class="btn btn-danger" id="rekap">Rekap</button> -->
+  <button
+    type="button"
+    class="btn btn-danger"
+    id="detail"
+    data-toggle="modal"
+    data-target="#modalDetail"
+  >
+    Detail
+  </button>
+  <button
+    type="button"
+    class="btn addRekap btn-danger px-3 my-2"
+    data-toggle="modal"
+    data-target="#modalAdd"
+    class="viewRekap btn btn-outline-primary"
+  >
+    <i class="bi bi-plus-lg"></i>
+  </button>
+  <div class="contentTrx my-4"></div>
+</div>
+
+<div
+  class="modal fade"
+  id="modalDetail"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalDetailLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalDetailLabel">Detail Pembelian</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModalDetail"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade bd-example-modal-lg"
+  id="modalAdd"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalRekapViewLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalRekapViewLabel">Tambah Pembelian</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModalAdd"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $(".contentTrx").load("Transaksi/Pembelian/rekap.html");
+
+    $("#rekap").click(function () {
+      $(".contentTrx").load("Transaksi/Pembelian/rekap.html");
+    });
+
+    $("#detail").click(function () {
+      // ganti dengan modal
+      $("#bodyModalDetail").load("Transaksi/Pembelian/detail.html");
+      // console.log("twhwh");
+      // $("#modalDetail").modal("show");
+      // $(".contentTrx").load("Transaksi/Pembelian/detail.html");
+      // console.log("ha");
+    });
+
+    // $(".addRekap").click(function () {
+    //   $(".contentTrx").load("Transaksi/Pembelian/addRekap.html");
+    // });
+    $(".addRekap").ready(function () {
+      $("#bodyModalAdd").load("Transaksi/Pembelian/addRekap.html");
+    });
+  });
+</script>

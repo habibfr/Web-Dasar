@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>Table js</p>
+
+    <form action="">
+      <input
+        type="text"
+        name="firstname"
+        id="firstname"
+        placeholder="firstname"
+      />
+
+      <input type="text" name="lastname" id="lastname" placeholder="lastname" />
+
+      <input type="text" name="age" id="age" placeholder="age" />
+
+      <input type="text" name="id" id="id" placeholder="id" />
+
+      <input type="text" name="harga" id="harga" placeholder="1000" />
+
+      <input type="button" onclick="myFunction()" value="Submit" />
+    </form>
+
+    <table id="myTable">
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Age</th>
+        <th>ID</th>
+        <th>Beli</th>
+        <th>Action</th>
+      </tr>
+    </table>
+
+    <p id="total">Total</p>
+    <p id="t">Total Beli</p>
+    <script>
+      var table = document.getElementById("myTable");
+
+      function myFunction() {
+        var panjang = table.rows.length;
+        console.log(panjang);
+        var row = table.insertRow(panjang);
+        var cel1 = row.insertCell(0);
+        var cel2 = row.insertCell(1);
+        var cel3 = row.insertCell(2);
+        var cel4 = row.insertCell(3);
+        var cel5 = row.insertCell(4);
+        var cel6 = row.insertCell(5);
+
+        cel1.innerHTML = document.getElementById("firstname").value;
+        cel2.innerHTML = document.getElementById("lastname").value;
+        cel3.innerHTML = document.getElementById("age").value;
+        cel4.innerHTML = document.getElementById("id").value;
+        cel5.innerHTML = document.getElementById("harga").value;
+        cel6.innerHTML = "<button onclick='myDeleteFunction()'>Delete</button>";
+        document.getElementById("total").innerHTML =
+          "Total : " + (table.rows.length - 1);
+        Total();
+      }
+
+      function myDeleteFunction() {
+        table.deleteRow(1);
+        document.getElementById("total").innerHTML =
+          "Total : " + (table.rows.length - 1);
+        Total();
+      }
+
+      function Total() {
+        total = 0;
+
+        for (var i = 1; i < table.rows.length; i++) {
+          // total = total + parseInt(table.rows[i].cells[4].value);
+
+          total += 1000;
+        }
+
+        document.getElementById("t").innerHTML = "Total Beli : " + total;
+      }
+    </script>
+  </body>
+</html>

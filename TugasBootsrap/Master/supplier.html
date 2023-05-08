@@ -1,0 +1,459 @@
+<div class="h1 text-center">Supplier</div>
+
+<button
+  type="button"
+  class="btn btn-add btn-danger px-3 my-2"
+  data-toggle="modal"
+  data-target="#staticBackdropSup"
+>
+  <i class="bi bi-plus-lg"></i>
+</button>
+
+<table
+  id="myTable"
+  class="table text-center table-hover table-striped mb-0 bg-white"
+>
+  <thead class="bg-light">
+    <tr>
+      <th>Kode</th>
+      <th>Nama</th>
+      <th>Perusahaan</th>
+      <th>Telp Sales</th>
+      <th>Telp Kantor</th>
+      <th>Email</th>
+      <th>Keterangan</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>S001</td>
+      <td>Ali</td>
+      <td>PT LENOVO INDONESIA</td>
+      <td>098765432</td>
+      <td>0986665432</td>
+      <td>agus@gmail.com</td>
+      <td>Done</td>
+      <td>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#modalView"
+          class="viewSup btn btn-outline-primary"
+        >
+          <i class="bi bi-eye"></i>
+        </button>
+        <button
+          type="button"
+          data-target="#staticBackdropSup"
+          class="updateSup btn btn-outline-info"
+          data-toggle="modal"
+        >
+          <i class="bi bi-pencil-square"></i>
+        </button>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          class="removeSup btn btn-outline-danger"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+
+    <tr>
+      <td>S002</td>
+      <td>Budi</td>
+      <td>PT Samsung INDONESIA</td>
+      <td>098765432</td>
+      <td>0986665432</td>
+      <td>budi@gmail.com</td>
+      <td>Pending</td>
+      <td>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#modalView"
+          class="viewSup btn btn-outline-primary"
+        >
+          <i class="bi bi-eye"></i>
+        </button>
+        <button
+          type="button"
+          data-target="#staticBackdropSup"
+          class="updateBarang btn btn-outline-info"
+          data-toggle="modal"
+        >
+          <i class="bi bi-pencil-square"></i>
+        </button>
+        <button
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          class="removeSup btn btn-outline-danger"
+        >
+          <i class="bi bi-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div
+  class="modal fade"
+  id="staticBackdropSup"
+  data-backdrop="static"
+  tabindex="-1"
+  data-keyboard="false"
+  aria-labelledby="modalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header border-bottom-0">
+        <h5 class="modal-title" id="modalLabel">Tambah Supplier</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <form
+            action=""
+            method="POST"
+            enctype="multipart/form-data"
+            method="POST"
+            id="ModalForm"
+          >
+            <input
+              type="hidden"
+              name="_token"
+              value="x69ZyrUU0dB2R3MQup1nPSO2BmKoNvtymxYQWPAN"
+            />
+            <input type="hidden" id="editId" value="" />
+            <div class="form-group">
+              <div class="row">
+                <div class="col">
+                  <label for="kodeSup">Kode</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="kodeSup"
+                    placeholder="S001"
+                    name="kodeSup"
+                  />
+                </div>
+                <div class="col">
+                  <label for="namaSup">Nama</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="namaSup"
+                    placeholder="Budi"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="perusahaanSup">Perusahaan</label>
+              <input
+                type="text"
+                class="form-control"
+                id="perusahaanSup"
+                placeholder="Batu"
+              />
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col">
+                  <label for="telKantorSup">Tel Kantor</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="telKantorSup"
+                    placeholder="098765432"
+                  />
+                </div>
+                <div class="col">
+                  <label for="telSalesSup">Tel Sales</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="telSalesSup"
+                    placeholder="13459867"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="emailSup">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="emailSup"
+                placeholder="habib123@fake.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="keteranganSup">Keterangan</label>
+              <textarea
+                class="form-control"
+                id="keteranganSup"
+                rows="3"
+              ></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="content"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button
+            type="submit"
+            class="btn btn-danger"
+            id="saveSupplier"
+            data-dismiss="modal"
+          >
+            Add
+          </button>
+          <button
+            type="button"
+            class="btn updt btn-danger"
+            id="saveModalButton"
+            data-dismiss="modal"
+          >
+            Update
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="modalView"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalViewLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalViewLabel">Detail Supplier</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card text-center">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item detKode">Kode</li>
+            <li class="list-group-item detNama">Nama</li>
+            <li class="list-group-item detPerusahaan">Perusahaan</li>
+            <li class="list-group-item detTelSales">Tel Sales</li>
+            <li class="list-group-item detTelKantor">Tel Kantor</li>
+            <li class="list-group-item detEmail">Email</li>
+            <li class="list-group-item detKet">Ket</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <script src="js/jquery.confirmModal.min.js"></script> -->
+<script>
+  $(document).ready(function () {
+    $(function () {
+      //Take the data from the TR during the event button
+      $("table").on("click", "button.updateSup", function (ele) {
+        console.log("clik");
+        $("#saveModalButton").show();
+        $("#saveSupplier").hide();
+        $("#kodeSup").prop("disabled", true);
+        //the <tr> variable is use to set the parentNode from "ele"
+        var tr = ele.target.parentNode.parentNode;
+
+        //I get the value from the cells (td) using the parentNode (var tr)
+        var id = $(this).attr("id");
+        // console.log(id);
+        var currentRow = $(this).closest("tr");
+        // console.log(currentRow);
+
+        var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+        var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+        var col3 = currentRow.find("td:eq(2)").text();
+        var col4 = currentRow.find("td:eq(3)").text();
+        var col5 = currentRow.find("td:eq(4)").text();
+        var col6 = currentRow.find("td:eq(5)").text();
+        var col7 = currentRow.find("td:eq(6)").text();
+        // console.log(col1);
+
+        //Prefill the fields with the gathered information
+        // $("h5.modal-title").html("Edit Admin Data: " + firstName + "");
+        $("#namaSup").val(col2);
+        $("#perusahaanSup").val(col3);
+        $("#telSalesSup").val(col4);
+        $("#telKantorSup").val(col5);
+        $("#emailSup").val(col1);
+        $("#keteranganSup").val(col6);
+        // $("#editLevel").val(level).attr("selected", "selected");
+
+        //If you need to update the form data and change the button link
+        $("form#ModalForm").attr(
+          "action",
+          window.location.href + "/update/" + id
+        );
+        $("#saveModalButton").attr(
+          "href",
+          window.location.href + "/update/" + id
+        );
+      });
+    });
+
+    $(function () {
+      //Click Event listener waiting for the click from the modal save button
+      $("div.modal-footer").on("click", "button#saveModalButton", function () {
+        //Get all information from the form field
+        var id = $("#editId").attr("value");
+        var nama = $("#namaSup").val();
+        var jbtn = $("#perusahaanSup").val();
+        var tel = $("#telSalesSup").val();
+        var email = $("#telKantorSup").val();
+        var pass = $("#emailSup").val();
+        var ket = $("#keteranganSup").val();
+        var kode = $("#kodeSup").val();
+
+        $("." + kode + " td:nth-child(2)").text(nama);
+        $("." + kode + " td:eq(2)").text(jbtn);
+        $("." + kode + " td:eq(3)").text(tel);
+        $("." + kode + " td:eq(4)").text(email);
+        $("." + kode + " td:eq(5)").text(pass);
+        $("." + kode + " td:eq(6)").text(ket);
+      });
+    });
+
+    function reset() {
+      $("#namaSup").val("");
+      $("#perusahaanSup").val("");
+      $("#telSalesSup").val("");
+      $("#telKantorSup").val("");
+      $("#emailSup").val("");
+      $("#keteranganSup").val("");
+      $("#kodeSup").val("");
+    }
+
+    $(".btn-add").click(function () {
+      reset();
+      $("#saveModalButton").hide();
+      $("#saveSupplier").show();
+      $("#kodeSup").prop("disabled", false);
+    });
+
+    $("#saveSupplier").click(function () {
+      let panjang = $("#myTable tbody tr").length;
+      let kode = $("#kodeSup").val();
+      let nama = $("#namaSup").val();
+      let perusahaan = $("#perusahaanSup").val();
+      let telSales = $("#telSalesSup").val();
+      let telKantor = $("#telKantorSup").val();
+      let email = $("#emailSup").val();
+      let ket = $("#keteranganSup").val();
+      console.log(telKantor, telSales);
+
+      $("tbody").append(
+        "<tr id=tr" +
+          panjang +
+          " class=" +
+          kode +
+          "><td>" +
+          kode +
+          "</td><td>" +
+          nama +
+          "</td><td>" +
+          perusahaan +
+          "</td><td>" +
+          telSales +
+          "</td><td>" +
+          telKantor +
+          "</td><td>" +
+          email +
+          "</td><td>" +
+          ket +
+          '</td><td> <button type="button" data-toggle="modal" data-target="#modalView" class="viewSup btn btn-outline-primary" id="id' +
+          panjang +
+          '"><i class="bi bi-eye"></i></button> <button type="button" data-target="#staticBackdropSup" class="updateSup btn btn-outline-info" data-toggle="modal" id="id' +
+          panjang +
+          '" > <i class="bi bi-pencil-square"></i></button> <button type="button" data-toggle="modal" data-target="#exampleModal" id="id' +
+          panjang +
+          '" class="removeSup btn btn-outline-danger"><i class="bi bi-trash"></i> </button></td></tr>'
+      );
+    });
+
+    $("tbody").on("click", ".removeSup", function () {
+      var id = $(this).attr("id");
+
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        // console.log(id);
+        if (result.isConfirmed) {
+          $(this).closest("tr").remove();
+          Swal.fire("Deleted!", "Your data has been deleted.", "success");
+        }
+      });
+    });
+
+    $("tbody").on("click", ".viewSup", function () {
+      var id = $(this).attr("id");
+      // console.log(id);
+      var currentRow = $(this).closest("tr");
+      // console.log(currentRow);
+
+      var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+      var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+      var col3 = currentRow.find("td:eq(2)").text();
+      var col4 = currentRow.find("td:eq(3)").text();
+      var col5 = currentRow.find("td:eq(4)").text();
+      var col6 = currentRow.find("td:eq(5)").text();
+      var col7 = currentRow.find("td:eq(6)").text();
+
+      $(".detKode").text(col1);
+      $(".detNama").text(col2);
+      $(".detPerusahaan").text(col3);
+      $(".detTelSales").text(col4);
+      $(".detTelKantor").text(col5);
+      $(".detEmail").text(col6);
+      $(".detKet").text(col7);
+    });
+  });
+</script>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karyawan</title>
+  </head>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .header {
+      background-color: #e2e2e2;
+      text-align: center;
+    }
+
+    h1 {
+      color: red;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .container {
+      margin: auto;
+      /* padding: 16px; */
+      max-width: 840px;
+      text-align: center;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    .head {
+      background-color: #f1f1f1;
+      text-align: center;
+      border: 5px red;
+      border-style: dotted;
+      display: inline-block;
+      padding: 20px;
+    }
+
+    label {
+      float: left;
+      margin: 10px 0;
+      margin-bottom: 4px;
+      text-transform: capitalize;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    #golongan {
+      width: 100%;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      background-color: white;
+      padding: 9px 10px;
+    }
+
+    input[type="submit"] {
+      width: 100px;
+      text-transform: capitalize;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .btn {
+      text-align: right;
+      margin: 10px 0 40px 0;
+    }
+
+    .btn-save {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: medium;
+    }
+
+    .btn-cancel {
+      background-color: #a2a4a2;
+      color: white;
+      padding: 10px 20px;
+      margin: 5px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: medium;
+    }
+
+    footer {
+      background-color: #e2e2e2;
+      text-align: center;
+      padding: 10px;
+      /* position: absolute; */
+      bottom: 0;
+      display: block;
+      width: 100%;
+    }
+
+    .footer {
+      color: rgb(200, 202, 204);
+      text-transform: uppercase;
+    }
+  </style>
+
+  <body>
+    <div class="header">
+      <h1 class="head">NINO CHAN STORE</h1>
+    </div>
+
+    <div class="topnav">
+      <a href="../index.html">Home</a>
+      <a href="../barang/index.html">Barang</a>
+      <a class="active" href="index.html">Karyawan</a>
+      <a href="../supplier/index.html">Supplier</a>
+    </div>
+
+    <div class="container">
+      <h2>Master Karyawan</h2>
+
+      <form action="index.html">
+        <label for="kode">Kode</label><br />
+        <input type="text" name="kode" id="kode" placeholder="1234" /><br />
+
+        <label for="nama">nama</label><br />
+        <input type="text" name="nama" id="nama" placeholder="Komputer" /><br />
+
+        <label for="golongan">Operator</label><br />
+        <select name="golongan" id="golongan">
+          <option value="komputer">Admin</option>
+          <option value="hp">Operator</option>
+          <option value="aksesoris">Supervisor</option>
+        </select>
+        <br />
+
+        <label for="tel">Tel</label><br />
+        <input type="text" name="tel" id="tel" placeholder="12345678" /><br />
+
+        <label for="email">email</label><br />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="budi@gmail.com"
+        /><br />
+
+        <label for="password">password</label><br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="1234"
+        /><br />
+
+        <div class="btn">
+          <input class="btn-save" type="submit" name="save" value="simpan" />
+          <input type="submit" class="btn-cancel" name="cancel" value="batal" />
+        </div>
+      </form>
+    </div>
+
+    <footer>
+      <p class="footer">by NINO CHAN.</p>
+    </footer>
+  </body>
+</html>

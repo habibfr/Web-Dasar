@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Input Data Ajax</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="assets/bootstrap/css/bootstrap.css"
+    />
+    <script
+      type="text/javascript"
+      src="assets/bootstrap/js/bootstrap.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="assets/jquery/jquery-3.3.1.min.js"
+    ></script>
+  </head>
+  <body style="margin: 20px">
+    <div class="container">
+      <div class="panel panel-info">
+        <div class="panel-heading">Input Data Ajax</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="form-group col-md-12">
+              <div class="col-md-3">
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" name="nama" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label for="umur">Umur</label>
+                <input type="text" id="umur" name="umur" class="form-control" />
+              </div>
+              <div class="col-md-3">
+                <label for="domisili">Domisili</label>
+                <input
+                  type="text"
+                  id="domisili"
+                  name="domisili"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-md-3">
+                <label for="pekerjaan">Pekerjaan</label>
+                <input
+                  type="text"
+                  id="pekerjaan"
+                  name="pekerjaan"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-md-12">
+              <div class="col-md-6">
+                <button class="btn btn-success" id="btn_kirim">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#btn_kirim").on("click", function () {
+          var nama = $("input[name='nama']").val();
+          var umur = $("input[name='umur']").val();
+          var dom = $("input[name='domisili']").val();
+          var job = $("input[name='pekerjaan']").val();
+          // console.log(dom);
+          $.ajax({
+            url: "ini.php",
+            type: "POST",
+            dataType: "json",
+            data: { nama: nama, umur: umur, domisili: dom, pekerjaan: job },
+            success: function (response) {
+              alert(
+                "Nama anda adalah " +
+                  response["nama"] +
+                  ". Umur Anda adalah " +
+                  response["umur"] +
+                  " tahun, berdomisili di " +
+                  response["domisili"] +
+                  " dan bekerja sebagai " +
+                  response["pekerjaan"]
+              );
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

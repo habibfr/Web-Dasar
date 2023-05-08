@@ -1,0 +1,294 @@
+<head>
+  <style>
+    body {
+      background: white;
+    }
+
+    input[type="text"],
+    select {
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    label {
+      margin: 0 30px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #4caf50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+
+    th,
+    tr {
+      text-align: center;
+      padding: 8px;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #e1e0e0;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    td {
+      text-align: center;
+      padding: 10px;
+    }
+
+    tr:hover {
+      background-color: #7eed82;
+      color: white;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 13px 21px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<div class="add">
+  <form>
+    <label for="kode">Kode : </label>
+    <input type="text" name="kode" id="kode" placeholder="1234" />
+    <label for="karyawan">Karyawan</label>
+    <select name="karyawan" id="karyawan">
+      <option value="0">Pilih karyawan</option>
+      <option value="1">Ali</option>
+      <option value="2">Budi</option>
+      <option value="3">Ceri</option></select
+    ><br />
+
+    <label for="tgl">Tanggal : </label>
+    <input type="text" name="tgl" id="tgl" placeholder="20220201" />
+
+    <label for="jabatan">Jabatan</label>
+    <input type="text" name="jabatan" id="jabatan" placeholder="admin" /><br />
+
+    <label for="supplier">Supplier : </label>
+    <select name="supplier" id="supplier">
+      <option value="0">Pilih Supplier</option>
+      <option value="1">ALI</option>
+      <option value="2">Budi</option>
+      <option value="3">Ceri</option>
+    </select>
+    <br />
+
+    <label for="telepon">Telepon : </label>
+    <input
+      type="text"
+      name="telepon"
+      id="telepon"
+      placeholder="098765432"
+    /><br />
+
+    <label for="alamat">Alamat : </label>
+    <input type="text" name="alamat" id="alamat" placeholder="surabaya" /><br />
+
+    <br /><br />
+    <select name="kodeBrg" id="kodeBrg">
+      <option value="0">Kode</option>
+      <option value="M001">M001</option>
+      <option value="M002">M002</option>
+      <option value="M003">M003</option>
+    </select>
+    <input type="text" name="namaBrg" id="namaBrg" placeholder="pasir" />
+    <input type="text" name="satuanBrg" id="satuanBrg" placeholder="pcs" />
+    <input type="text" name="hargaBrg" id="hargaBrg" placeholder="294" />
+    <input type="text" name="jmlBrg" id="jmlBrg" placeholder="90" />
+    <button type="button" id="save">Save</button>
+  </form>
+
+  <br />
+  <table border="1">
+    <theader>
+      <tr>
+        <th>Kode</th>
+        <th>Nama</th>
+        <th>Satuan</th>
+        <th>Harga</th>
+        <th>Jumlah</th>
+        <th>Total</th>
+        <th>Action</th>
+      </tr>
+    </theader>
+    <tbody id="tbody">
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td><button id="idpanjang" class="remove">x</button></td>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td>1</td>
+        <td><button id="idpanjang" class="remove">x</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br />
+  <br />
+  <label for="t">Total : </label><label for="total" id="total">0</label>
+</div>
+
+<script>
+  $(document).ready(function () {
+    let kode = "";
+    let tanggal = "";
+    let tgl = new Date();
+    kode =
+      tgl.getFullYear() +
+      "" +
+      tgl.getMonth() +
+      tgl.getHours() +
+      tgl.getMinutes();
+    // console.log(kode);
+    tanggal = tgl;
+    $("#kode").val(kode);
+    $("#tgl").val(tanggal);
+    // return false;
+
+    $("#supplier").click(function () {
+      var namaSup = $("#supplier").find(":selected").val();
+      // console.log(conceptName);s
+
+      if (namaSup == "1") {
+        $("#telepon").val("09876544");
+        $("#alamat").val("surabaya");
+      } else if (namaSup == "2") {
+        $("#telepon").val("09876512");
+        $("#alamat").val("bandung");
+      } else if (namaSup == "3") {
+        $("#telepon").val("09876532");
+        $("#alamat").val("makasar");
+      }
+    });
+
+    $("#karyawan").click(function () {
+      let namaKar = $("#karyawan").find(":selected").val();
+
+      if (namaKar == "1") {
+        $("#jabatan").val("admin");
+      } else if (namaKar == "2") {
+        $("#jabatan").val("supervisor");
+      } else if (namaKar == "3") {
+        $("#jabatan").val("marketing");
+      }
+    });
+
+    $("#kodeBrg").click(function () {
+      let kodeBrg = $("#kodeBrg").find(":selected").val();
+      let nama = "";
+      let satuan = "";
+      let harga = 0;
+      let jumlah = 0;
+
+      if (kodeBrg == "M001") {
+        nama = "pasir";
+        satuan = "pcs";
+        harga = 20;
+
+        $("#namaBrg").val(nama);
+        $("#satuanBrg").val(satuan);
+        $("#hargaBrg").val(harga);
+      } else if (kodeBrg == "M002") {
+        nama = "batu";
+        satuan = "pcs";
+        harga = 40;
+
+        $("#namaBrg").val(nama);
+        $("#satuanBrg").val(satuan);
+        $("#hargaBrg").val(harga);
+      } else if (kodeBrg == "M003") {
+        nama = "semen";
+        satuan = "pcs";
+        harga = 80;
+
+        $("#namaBrg").val(nama);
+        $("#satuanBrg").val(satuan);
+        $("#hargaBrg").val(harga);
+      }
+    });
+
+    $("#save").click(function () {
+      let grandTotal = 0;
+
+      let panjang = $("#tbody tr").length;
+      console.log(panjang);
+      let kode = $("#kodeBrg").val();
+      let nama = $("#namaBrg").val();
+      let satuan = $("#satuanBrg").val();
+      let harga = $("#hargaBrg").val();
+      let jumlah = $("#jmlBrg").val();
+      let total = Number(+harga) * Number(+jumlah);
+      // console.log(total);
+
+      $("#tbody").append(
+        "<tr><td>" +
+          kode +
+          "</td><td>" +
+          nama +
+          "</td><td>" +
+          satuan +
+          "</td><td>" +
+          harga +
+          "</td><td>" +
+          jumlah +
+          "</td><td>" +
+          total +
+          '</td><td><button id="id' +
+          panjang +
+          '" class="remove">x</button></tr>'
+      );
+      $("#tbody tr").each(function () {
+        let currentRow = $(this);
+        grandTotal += Number(currentRow.find("td:eq(5)").text());
+        // console.log(total);
+        $("#total").text(grandTotal);
+      });
+    });
+
+    $("#tbody").on("click", ".remove", function () {
+      grandTotal = 0;
+      var id = $(this).attr("id");
+      console.log(id);
+      $(this).closest("tr").remove();
+      $("#tbody tr").each(function () {
+        var currentRow = $(this);
+        grandTotal += Number(currentRow.find("td:eq(5)").text());
+        // console.log(total);
+      });
+
+      $("#total").text(grandTotal);
+    });
+  });
+</script>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tugas Praktikum 2</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 50%;
+      }
+
+      .title {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 10px;
+        margin: 0 auto;
+        max-width: 50%;
+        font-size: 30px;
+        font-weight: bold;
+      }
+
+      label {
+        float: left;
+        margin: 10px 0 5px 0;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #e1e1e1;
+        margin: 5px 0 10px 0;
+      }
+
+      input:focus,
+      textarea:focus {
+        background-color: azure;
+        border: 1px solid #4caf50;
+      }
+
+      .btn {
+        text-align: left;
+      }
+
+      button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: 1px solid #e1e1e1;
+        margin: 5px 0 5px 0;
+        cursor: pointer;
+      }
+
+      .btnSimpan {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .btnCancel {
+        background-color: #f7b308;
+        color: black;
+      }
+
+      table {
+        border-collapse: collapse;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      th {
+        text-align: left;
+        border-top: 2px solid #e1e1e1;
+        border-bottom: 2px solid #e1e1e1;
+        padding: 10px;
+      }
+
+      td {
+        text-align: left;
+        padding: 10px;
+        border-bottom: 1px solid #e1e1e1;
+      }
+
+      th {
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Pendaftaran</h1>
+      <form action="#">
+        <label for="nama">Nama :</label><br />
+        <input type="text" name="nama" id="nama" />
+        <br />
+        <label for="email">Email :</label><br />
+        <input type="email" name="email" id="email" />
+        <br />
+        <label for="jmlSdr">Jumlah Saudara :</label><br />
+        <input type="number" name="jmlSdr" id="jmlSdr" />
+        <br />
+        <label for="alamat">Alamat :</label><br />
+        <textarea name="alamat" id="alamat" cols="30" rows="10"></textarea>
+
+        <div class="btn">
+          <button type="submit" class="btnSimpan">Simpan</button>
+          <button type="submit" class="btnCancel">Batal</button>
+        </div>
+        <br />
+      </form>
+
+      <table>
+        <tr>
+          <th>Nama</th>
+          <th>Email</th>
+          <th>Jumlah Saudara</th>
+          <th>Alamat</th>
+        </tr>
+
+        <tr>
+          <td>Audrey</td>
+          <td>Audrey@gmail.com</td>
+          <td>2</td>
+          <td>Kenjerna</td>
+        </tr>
+
+        <tr>
+          <td>Agustinus</td>
+          <td>agustinussetiono@gmail.com</td>
+          <td>1</td>
+          <td>Kedung Baruk 98</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

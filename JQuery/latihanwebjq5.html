@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Get Jquery</h1>
+    <button id="ambil">ambil post</button>
+    <div id="isidata"></div>
+    <div id="isistatus"></div>
+    <div id="isidataitem1"></div>
+    <div id="isidataitem2"></div>
+    <div id="status"></div>
+
+    <script>
+      $(document).ready(function () {
+        $("#ambil").click(function () {
+          $.get(
+            "latihanwebjq55.php",
+            { kode: "m001", nama: "cpu", satuan: "pcs" },
+            function (data, status) {
+              // $("#status").text(status);
+              $("#isidata").text(data);
+              $("#isistatus").text(status);
+              const obj = JSON.parse(data);
+              $("#isidataitem1").text(obj.kode);
+              $("#isidataitem2").text(obj.nama);
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

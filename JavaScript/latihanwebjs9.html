@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch Case</title>
+</head>
+<body>
+
+  <h2>Switch Case</h2>
+
+  <p>Switch Case adalah salah satu pernyataan yang digunakan untuk memilih salah satu dari banyak blok kode yang akan dieksekusi.</p>
+
+  <p id="x">Hari</p>
+
+  <script>
+    let hari = new Date().getDay();
+
+    switch(hari){
+      case 0:
+        document.write("Minggu");
+        break;
+      case 1:
+        document.write("Senin");
+        break;
+      case 2:
+        document.write("Selasa");
+        break;
+      case 3:
+        document.write("Rabu");
+        break;
+      case 4:
+        document.write("Kamis");
+        break;
+      case 5:
+        document.write("Jumat");
+        break;
+      case 6:
+        document.write("Sabtu");
+        break;
+      default:
+        document.write("Tidak ada hari");
+    }
+  </script>
+</body>
+</html>

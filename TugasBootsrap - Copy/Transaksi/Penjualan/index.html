@@ -1,0 +1,17 @@
+<div class="container-fluid my-2">
+  <div class="h1 text-center">Penjualan</div>
+  <button type="button" class="btn addJual btn-danger px-3 my-2">
+    <i class="bi bi-plus-lg"></i>
+  </button>
+  <div class="contentJual my-4"></div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $(".contentJual").load("Transaksi/Penjualan/dataJual.html");
+
+    $(".addJual").click(function () {
+      $(".contentJual").load("Transaksi/Penjualan/addJual.html");
+    });
+  });
+</script>

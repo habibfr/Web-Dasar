@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NINO STORE</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+        max-width: 900px;
+        margin: 20px auto;
+      }
+
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .topnav a.active {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .header {
+        background-color: #f1f1f1;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .head {
+        background-color: #f1f1f1;
+        text-align: center;
+        border: 5px red;
+        border-style: dotted;
+        display: inline-block;
+        padding: 20px;
+      }
+
+      h1 {
+        color: red;
+      }
+
+      .topnav {
+        overflow: hidden;
+        background-color: #333;
+      }
+
+      .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+      }
+
+      .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+      }
+
+      .topnav a.active {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .row {
+        display: flex;
+      }
+
+      .leftcolumn {
+        flex: 70%;
+        padding: 10px;
+      }
+
+      .rightcolumn {
+        flex: 30%;
+        padding: 10px;
+      }
+
+      .fakeimg {
+        background-color: #aaa;
+        width: 100%;
+        padding: 20px;
+      }
+
+      .card {
+        background-color: white;
+        padding: 20px;
+        margin-top: 20px;
+      }
+
+      footer {
+        background-color: #e2e2e2;
+        text-align: center;
+        padding: 10px;
+        /* position: absolute; */
+        bottom: 0;
+        display: block;
+        width: 100%;
+      }
+
+      .footer {
+        color: rgb(200, 202, 204);
+        text-transform: uppercase;
+      }
+
+      @media screen and (max-width: 800px) {
+        .row {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="head">NINO CHAN STORE</h1>
+    </div>
+
+    <div class="topnav">
+      <a href="index.html" class="active">Home</a>
+      <a href="barang/index.html">Barang</a>
+      <a href="karyawan/index.html">Karyawan</a>
+      <a href="supplier/index.html">Supplier</a>
+    </div>
+
+    <div class="row">
+      <div class="leftcolumn">
+        <div class="card">
+          <h2>Master Barang</h2>
+          <h5>Title description, Dec 7, 2017</h5>
+          <div class="fakeimg" style="height: 200px">Image</div>
+          <p>Some text..</p>
+          <p>Some text..</p>
+        </div>
+        <div class="card">
+          <h2>Master Karyawan</h2>
+          <h5>Title description, Sep 2, 2017</h5>
+          <div class="fakeimg" style="height: 200px">Image</div>
+          <p>Some text..</p>
+          <p>Some text..</p>
+        </div>
+      </div>
+      <div class="rightcolumn">
+        <div class="card">
+          <h2>About Me</h2>
+          <div class="fakeimg" style="height: 100px">Image</div>
+          <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+        </div>
+        <div class="card">
+          <h3>Popular Post</h3>
+          <div class="fakeimg">Image</div>
+          <br />
+          <div class="fakeimg">Image</div>
+          <br />
+          <div class="fakeimg">Image</div>
+        </div>
+        <div class="card">
+          <h3>Follow Me</h3>
+          <p>Some text..</p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p class="footer">by NINO CHAN.</p>
+    </footer>
+  </body>
+</html>

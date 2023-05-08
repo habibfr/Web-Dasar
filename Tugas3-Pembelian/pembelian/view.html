@@ -1,0 +1,153 @@
+<head>
+  <style>
+    input[type="text"],
+    select {
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    label {
+      margin: 0 30px;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background-color: #4caf50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+
+    th,
+    tr {
+      text-align: center;
+      padding: 8px;
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background-color: #e1e0e0;
+    }
+
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    td {
+      text-align: center;
+      padding: 10px;
+    }
+
+    tr:hover {
+      background-color: #7eed82;
+      color: white;
+    }
+  </style>
+</head>
+
+<form>
+  <label for="kode">Kode : </label>
+  <input type="text" name="kode" id="kode" placeholder="1234" /><br />
+
+  <label for="tgl">Tanggal : </label>
+  <input type="text" name="tgl" id="tgl" placeholder="20220201" /><br />
+
+  <label for="supplier">Supplier : </label>
+  <select name="supplier" id="supplier">
+    <option value="0">Pilih Supplier</option>
+    <option value="1">Ali</option>
+    <option value="2">Budi</option>
+    <option value="3">Ceri</option>
+  </select>
+  <br />
+
+  <label for="telepon">Telepon : </label>
+  <input
+    type="text"
+    name="telepon"
+    id="telepon"
+    placeholder="098765432"
+  /><br />
+
+  <label for="alamat">Alamat : </label>
+  <input type="text" name="alamat" id="alamat" placeholder="surabaya" /><br />
+
+  <br />
+</form>
+<table border="1">
+  <theader>
+    <tr>
+      <th>Kode</th>
+      <th>Nama</th>
+      <th>Satuan</th>
+      <th>Harga</th>
+      <th>Jumlah</th>
+      <th>Total</th>
+      <th>Action</th>
+    </tr>
+  </theader>
+  <tbody id="tbody"></tbody>
+</table>
+<table>
+  <tr>
+    <td width="5%">
+      <div id="ketSales">
+        <p id="ketNama">Nama</p>
+        <hr />
+        <p id="ketJab">Jabatan</p>
+      </div>
+    </td>
+    <td width="85%"></td>
+    <td width="5%">
+      <div id="ketTotal">
+        <p>Total</p>
+        <hr />
+        <div id="total">0</div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+<script>
+  $(document).ready(function () {
+    let kode = "";
+    let tanggal = "";
+    let tgl = new Date();
+    kode =
+      tgl.getFullYear() +
+      "" +
+      (tgl.getMonth() + 1) +
+      tgl.getHours() +
+      tgl.getMinutes();
+    // console.log(kode);
+    tanggal = tgl;
+    $("#kode").val(kode);
+    $("#tgl").val(tanggal);
+
+    $("#supplier").click(function () {
+      var namaSup = $("#supplier").find(":selected").val();
+      // console.log(conceptName);s
+
+      if (namaSup == "1") {
+        $("#telepon").val("09876544");
+        $("#alamat").val("surabaya");
+      } else if (namaSup == "2") {
+        $("#telepon").val("09876512");
+        $("#alamat").val("bandung");
+      } else if (namaSup == "3") {
+        $("#telepon").val("09876532");
+        $("#alamat").val("makasar");
+      }
+    });
+  });
+</script>

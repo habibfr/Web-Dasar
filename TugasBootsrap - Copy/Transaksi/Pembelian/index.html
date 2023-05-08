@@ -1,0 +1,28 @@
+<div class="container-fluid my-2">
+  <div class="h1 text-center">Pembelian</div>
+  <button type="button" class="btn btn-danger" id="rekap">Rekap</button>
+  <button type="button" class="btn btn-danger" id="detail">Detail</button>
+  <button type="button" class="btn addRekap btn-danger px-3 my-2">
+    <i class="bi bi-plus-lg"></i>
+  </button>
+  <div class="contentTrx my-4"></div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $(".contentTrx").load("Transaksi/Pembelian/rekap.html");
+
+    $("#rekap").click(function () {
+      $(".contentTrx").load("Transaksi/Pembelian/rekap.html");
+    });
+
+    $("#detail").click(function () {
+      $(".contentTrx").load("Transaksi/Pembelian/detail.html");
+      console.log("ha");
+    });
+
+    $(".addRekap").click(function () {
+      $(".contentTrx").load("Transaksi/Pembelian/addRekap.html");
+    });
+  });
+</script>
