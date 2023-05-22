@@ -1,3 +1,12 @@
+<?php
+
+include "databases/koneksi.php";
+$sql = "select * from barang";
+$result = mysqli_query($conn, $sql);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,8 +32,26 @@
       rel="stylesheet"
     />
 
-    <!-- Custom styles for this template-->
+    <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this page -->
+    <link
+      href="vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this page -->
+    <link
+      href="vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Custom styles for this page -->
+    <link
+      href="vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body id="page-top">
@@ -146,6 +173,13 @@
       <i class="fas fa-angle-up"></i>
     </a>
 
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -165,10 +199,11 @@
 
     <script>
       $(document).ready(function () {
-        $("#content").load("tables.html");
+
+        $("#content").load("tambahBarang.php");
 
         $("#masterBarang").click(function () {
-          $("#content").load("tables.html");
+          $("#content").load("tambahBarang.php");
         });
         $("#trxPermintaan").click(function () {
           $("#content").load("permintaan.html");
