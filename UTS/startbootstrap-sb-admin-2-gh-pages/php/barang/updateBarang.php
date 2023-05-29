@@ -1,5 +1,5 @@
 <?php
-include 'databases/koneksi.php';
+include "../../databases/koneksi.php";
 
 $kode_barang = $_POST['kode'];
 $nama_barang = $_POST['nama'];

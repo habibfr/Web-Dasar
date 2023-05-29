@@ -1,6 +1,6 @@
 <?php
 
-include "databases/koneksi.php";
+include "../../databases/koneksi.php";
 
 $sql = "select * from barang";
 $result = mysqli_query($conn, $sql);
@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 
-<div>
+<div id="barang">
   <!-- Page Wrapper -->
   <div id="wrapper">
     <!-- Content Wrapper -->
@@ -127,16 +127,6 @@ $result = mysqli_query($conn, $sql);
         <!-- /.container-fluid -->
       </div>
       <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
     </div>
     <!-- End of Content Wrapper -->
   </div>
@@ -360,7 +350,17 @@ $result = mysqli_query($conn, $sql);
         $(".btnHps").hide();
         $("#addBarang").show();
 
+        $(".addBarang").click(function(){
+          $("#kodeBarang").val("");
+          $("#namaBarang").val("");
+          $("#satuanBarang").val("");
+          $("#hargaBeli").val("");
+          $("#hargaJual").val("");
+          $('#kodeBarang').prop('readonly', false);
+        })
+
       $("#addBarang").click(function () { 
+        $(".modal-backdrop").remove();
         $("#uptdBarang").hide();
         $(".btnHps").hide();
         $("#addBarang").show(); 
@@ -372,7 +372,7 @@ $result = mysqli_query($conn, $sql);
 
         console.log(kode, nama, satuan, hargaBeli, hargaJual);
         $.ajax({
-          url: "simpanBarang.php",
+          url: "php/barang/simpanBarang.php",
           type: "POST",
           data: {
             kode: kode,
@@ -384,7 +384,7 @@ $result = mysqli_query($conn, $sql);
           success: function (data) {
             console.log(data);
             // alert("Data Berhasil Ditambahkan");
-            $("#tbodyTabelBarang").load('#tbodyTabelBarang');
+            $("#content").load("php/barang/tambahBarang.php");
             // location.reload();
           },
           error: function (data) {
@@ -395,6 +395,8 @@ $result = mysqli_query($conn, $sql);
       });
 
       $("#uptdBarang").click(function () {
+        $(".modal-backdrop").remove();
+
         var kode = $("#kodeBarang").val();
         var nama = $("#namaBarang").val();
         var satuan = $("#satuanBarang").val();
@@ -403,7 +405,7 @@ $result = mysqli_query($conn, $sql);
 
         console.log(kode, nama, satuan, hargaBeli, hargaJual);
         $.ajax({
-          url: "updateBarang.php",
+          url: "php/barang/updateBarang.php",
           type: "POST",
           data: {
             kode: kode,
@@ -415,7 +417,7 @@ $result = mysqli_query($conn, $sql);
           success: function (data) {
             console.log(data);
             // alert("Data Berhasil Ditambahkan");
-            $("#tbodyTabelBarang").load('#tbodyTabelBarang');
+            $("#content").load("php/barang/tambahBarang.php");
             // location.reload();
           },
           error: function (data) {
@@ -423,9 +425,12 @@ $result = mysqli_query($conn, $sql);
             alert("Data Gagal Ditambahkan");
           },
         });
+        $(".modal-backdrop .fade .show").remove();
       });
 
       $("#hapusBarang").click(function () {
+        $(".modal-backdrop").remove();
+
         var kode = $("#kodeBarang").val();
         var nama = $("#namaBarang").val();
         var satuan = $("#satuanBarang").val();
@@ -434,7 +439,7 @@ $result = mysqli_query($conn, $sql);
 
         console.log(kode, nama, satuan, hargaBeli, hargaJual);
         $.ajax({
-          url: "hapusBarang.php",
+          url: "php/barang/hapusBarang.php",
           type: "POST",
           data: {
             kode: kode,
@@ -446,7 +451,7 @@ $result = mysqli_query($conn, $sql);
           success: function (data) {
             console.log(data);
             // alert("Data Berhasil Ditambahkan");
-            $("#tbodyTabelBarang").load('#tbodyTabelBarang');
+            $("#content").load("php/barang/tambahBarang.php");
             // location.reload();
           },
           error: function (data) {
@@ -454,6 +459,7 @@ $result = mysqli_query($conn, $sql);
             alert("Data Gagal Ditambahkan");
           },
         });
+        $(".modal-backdrop .fade .show").remove();
       });
 
   
@@ -480,11 +486,7 @@ $result = mysqli_query($conn, $sql);
         $("#hargaBeli").val(col4);
         $("#hargaJual").val(col5);
         $('#kodeBarang').prop('readonly', true);
-
-      });
-      
-      
-
+      });      
     });
   </script>
 </div>
