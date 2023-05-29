@@ -115,6 +115,12 @@ $result = mysqli_query($conn, $sql);
                 id="masterBarang"
                 >Barang</a
               >
+              <a
+                class="collapse-item"
+                href="javascript:void()"
+                id="masterKaryawan"
+                >Karyawan</a
+              >
             </div>
           </div>
         </li>
@@ -200,11 +206,16 @@ $result = mysqli_query($conn, $sql);
     <script>
       $(document).ready(function () {
 
-        $("#content").load("tambahBarang.php");
+        // $("#content").load("php/barang/tambahBarang.php");
 
         $("#masterBarang").click(function () {
-          $("#content").load("tambahBarang.php");
+          $("#content").load("php/barang/tambahBarang.php");
         });
+
+        $("#masterKaryawan").click(function () {
+          $("#content").load("php/karyawan/tambahKaryawan.php");
+        });
+
         $("#trxPermintaan").click(function () {
           $("#content").load("permintaan.html");
         });
