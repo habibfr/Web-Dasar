@@ -40,18 +40,6 @@ $result = mysqli_query($conn, $sql);
       href="vendor/datatables/dataTables.bootstrap4.min.css"
       rel="stylesheet"
     />
-
-    <!-- Custom styles for this page -->
-    <link
-      href="vendor/datatables/dataTables.bootstrap4.min.css"
-      rel="stylesheet"
-    />
-
-    <!-- Custom styles for this page -->
-    <link
-      href="vendor/datatables/dataTables.bootstrap4.min.css"
-      rel="stylesheet"
-    />
   </head>
 
   <body id="page-top">
@@ -120,6 +108,12 @@ $result = mysqli_query($conn, $sql);
                 href="javascript:void()"
                 id="masterKaryawan"
                 >Karyawan</a
+              >
+              <a
+                class="collapse-item"
+                href="javascript:void()"
+                id="masterSupplier"
+                >Supplier</a
               >
             </div>
           </div>
@@ -216,8 +210,12 @@ $result = mysqli_query($conn, $sql);
           $("#content").load("php/karyawan/tambahKaryawan.php");
         });
 
+        $("#masterSupplier").click(function () {
+          $("#content").load("php/supplier/tambahSupplier.php");
+        });
+
         $("#trxPermintaan").click(function () {
-          $("#content").load("permintaan.html");
+          $("#content").load("php/transaksi/permintaan.php");
         });
       });
     </script>
