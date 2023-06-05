@@ -2,8 +2,15 @@
 
 include "../../databases/koneksi.php";
 
+
 $sql = "SELECT * FROM `master_permintaan`";
 $result = mysqli_query($conn, $sql);
+
+// echo $kodePer;
+
+// $result1 = mysqli_query($conn, $sql);
+
+
 
 ?>
 
@@ -53,7 +60,7 @@ $result = mysqli_query($conn, $sql);
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table tableMasterPermintaan table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Kode</th>
@@ -103,19 +110,6 @@ $result = mysqli_query($conn, $sql);
                     }
                     ?>
 
-                    <!-- <tr>
-                      <td>P001</td>
-                      <td class="tgl">12-01-2020</td>
-                      <td>Ali</td>
-                      <td>Ani</td>
-                      <td>5</td>
-                      <td>200</td>
-                      <td>
-                        <button type="button" data-toggle="modal" data-target="#modalViewPermintaan" class="viewBrg btn btn-outline-success">
-                          <i class="fas fa-eye fa-sm"></i>
-                        </button>
-                      </td>
-                    </tr> -->
                   </tbody>
                   <tfoot>
                     <tr>
@@ -214,37 +208,50 @@ $result = mysqli_query($conn, $sql);
     </div>
   </div>
 
-  <!-- modal view barang -->
-  <div class="modal fade" id="modalViewPermintaan" tabindex="-1" role="dialog" aria-labelledby="modalViewLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+  <!-- Modal View Permintaan -->
+  <div class="modal  fade" id="modalViewPermintaan" tabindex="-1" role="dialog" aria-labelledby="modalViewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalViewLabel">Detail Permintaancd </h5>
+          <h5 class="modal-title" id="modalRekapViewLabel">View Permintaan</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <div class="modal-body">
-          <div class="card text-center">
+          <div class="card text-center mb-5">
             <ul class="list-group list-group-flush">
-              <li class="list-group-item detKode">KODE</li>
-              <li class="list-group-item detNama">Tanggal</li>
-              <li class="list-group-item detSatuan">Konsumen</li>
-              <li class="list-group-item detHarga">Telp</li>
-              <li class="list-group-item detHarga">Alamat</li>
-              <li class="list-group-item detHarga">Karyawan Kode</li>
-              <li class="list-group-item detHarga">Keterangan</li>
-              <li class="list-group-item detHarga">Total</li>
+              <li class="list-group-item detKode">Kode : J001</li>
+              <li class="list-group-item detTanggal">Tanggal : 2023-4-8</li>
+              <li class="list-group-item detKonsumen">Konsumen : Agus</li>
+              <li class="list-group-item detKaryawan">Karyawan : Budi M</li>
             </ul>
+          </div>
+
+          <div class="card shadow mb-4">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Kode</th>
+                      <th>Nama</th>
+                      <th>Satuan</th>
+                      <th>Harga</th>
+                      <th>Jumlah</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyViewPermintaan">
+                  </tbody>
+                  <tfoot id="tfootViewPermintaan">
+
+                  </tfoot>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
         <div class="modal-footer">
-          <!-- <button type="button" class="btn btn-success" data-dismiss="modal">
-            Update
-          </button> -->
-          <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">
-            Delete
-          </button> -->
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Close
           </button>
@@ -253,8 +260,9 @@ $result = mysqli_query($conn, $sql);
     </div>
   </div>
 
+
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal  fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -286,6 +294,8 @@ $result = mysqli_query($conn, $sql);
   <script>
     $(document).ready(function() {
 
+      let dataPer = [];
+
 
       var grandTotal = 0;
       var totalItem = 0;
@@ -302,6 +312,121 @@ $result = mysqli_query($conn, $sql);
       $(".addPermintaan").click(function() {
         $("#content").load("php/transaksi/addPermintaan.php");
       });
+
+      $(".tableMasterPermintaan").on("click", "#viewPermintaan", function() {
+
+        // $("#uptdBarang").show();
+        // $(".btnHps").show();
+        // $("#addBarang").hide();
+
+        // ("#kodeBarang").attr('readonly', true);
+        var currentRow = $(this).closest("tr");
+
+        var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
+        var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
+        var col3 = currentRow.find("td:eq(2)").text();
+        var col4 = currentRow.find("td:eq(6)").text();
+        // var col5 = currentRow.find("td:eq(4)").text();
+        console.log(col1, col2, col3);
+
+
+        $(".detKode").text("Kode : " + col1);
+        $(".detTanggal").text("Tanggal : " + col2);
+        $(".detKonsumen").text("Konsumen : " + col3);
+
+
+
+        $.ajax({
+          url: "php/transaksi/detailKaryawan.php",
+          type: "POST",
+          dataType: "json",
+          data: {
+            kodeKar: col4,
+          },
+          success: function(data, response) {
+            $(".detKaryawan").text("Karyawan : " + data[0].nama_karyawan);
+          },
+          error: function(data) {
+            alert("Gagal Kar");
+          },
+        });
+
+        // let dataBarang = [];
+        // $.ajax({
+        //   url: "php/transaksi/detailBarang.php",
+        //   type: "POST",
+        //   dataType: "json",
+        //   data: {
+        //     kodeDetail: col1,
+        //   },
+        //   success: function(data, response) {
+        //     // alert("success")
+        //     dataBarang = [];
+        //     // console.log(data[0])
+        //     let ic = 0;
+        //     for (const d of data) {
+        //       dataBarang.push(d)
+        //       $('#tbodyViewPermintaan').append(`
+        //         <tr>
+        //           <td id="${"brg"+ic}">${d.nama_barang}</td>
+        //           <td id="${"satuan"+ic}">${d.satuan}</td>
+        //         </tr>
+        //     `);
+        //     }
+        //   },
+        //   error: function(data) {
+        //     // console.log(data);
+        //     alert("Data Gagal");
+        //   },
+        // });
+
+
+        $.ajax({
+          url: "php/transaksi/kodePermintaan.php",
+          type: "POST",
+          dataType: "json",
+          data: {
+            kodePer: col1,
+          },
+          success: function(data, response) {
+            dataPer = [];
+            let jumlahItem = 0;
+            $("#tbodyViewPermintaan tr").remove();
+            $("#tfootViewPermintaan tr").remove();
+
+            let i = 0;
+            // console.log(dataBarang[0].nama_barang)
+            for (const d of data) {
+              jumlahItem += Number(d.jumlah);
+              // dataPer.push(d)
+              $('#tbodyViewPermintaan').append(`
+                <tr>
+                  <td>${d.kode_permintaan}</td>
+                  <td>${d.nama_barang}</td>
+                  <td>${d.satuan}</td>
+                  <td>${d.harga_jual}</td>
+                  <td>${d.jumlah}</td>
+                </tr>
+            `);
+              i++;
+            }
+
+            $('#tfootViewPermintaan').append(` 
+                    <tr>
+                      <th colspan="3">Total</th>
+                      <th id="totalPermintaan">${data[0].total}</th>
+                      <th id="totalItem">${jumlahItem}</th>
+                    </tr>`);
+          },
+          error: function(data) {
+            // console.log(data);
+            alert("Data Gagal Ditambahkan");
+          },
+        });
+      });
+
+
+
 
 
       // $("#uptdBarang").hide();

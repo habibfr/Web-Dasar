@@ -4,6 +4,8 @@ include "../../databases/koneksi.php";
 
 $sql = "select * from barang";
 $result = mysqli_query($conn, $sql);
+$sqlKar = "select * from karyawan";
+$resultKar = mysqli_query($conn, $sqlKar);
 
 // INSERT INTO `master_permintaan` (`kode_permintaan`, `tanggal`, `konsumen`, `telp`, `alamat`, `keterangan`, `kode_karyawan`, `total`, `created_at`) VALUES ('T0001', '2023-05-10', 'Habib', '09876543', 'surabaya', 'tidak tau', 'K001', '1000', current_timestamp());
 
@@ -65,22 +67,34 @@ $result = mysqli_query($conn, $sql);
               <div class="col-sm-4">
                 <select class="custom-select" id="karyawanTrx">
                   <option value="0">Select Karyawan</option>
-                  <option value="K001">Ali</option>
+                  <?php
+                  if (mysqli_num_rows($resultKar) > 0) {
+                    while ($row = mysqli_fetch_assoc($resultKar)) {
+                      echo "<option value=" . $row["kode_karyawan"]  . ">" . $row["nama_karyawan"] . "</option>";
+                    }
+                  }
+                  ?>
+                  <!-- <option value="K001">Ali</option>
                   <option value="K002">Budi</option>
-                  <option value="K003">Ceri</option>
+                  <option value="K003">Ceri</option> -->
                 </select>
               </div>
-              <label for="jabatanTrx" class="col-sm-1 col-form-label">Keterangan</label>
+              <!-- <label for="jabatanTrx" class="col-sm-1 col-form-label">Keterangan</label>
               <span class="ml-4 col-form-label">:</span>
               <div class="col-sm-4">
                 <input type="text" class="form-control" id="jabatanTrx" placeholder="Admin" />
+              </div> -->
+              <label for="ketTrx" class="col-sm-1 col-form-label">Keterangan</label>
+              <span class="ml-4 col-form-label">:</span>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="ketTrx" placeholder="WTH" />
               </div>
             </div>
             <div class="form-group row">
               <label for="tglTrx" class="col-sm-1 col-form-label">Tanggal</label>
               <span class="ml-4 col-form-label">:</span>
               <div class="col-sm-4">
-                <input type="text" class="form-control" id="tglTrx" name="tglTrx" placeholder="12 Descen 2032" />
+                <input type="text" class="form-control" id="tglTrx" name="tglTrx" />
               </div>
 
               <!-- <label for="jabatanTrx" class="col-sm-1 col-form-label">Keterangan</label>
@@ -90,8 +104,15 @@ $result = mysqli_query($conn, $sql);
               </div> -->
 
             </div>
-
             <div class="form-group row">
+              <label for="konsumenTrx" class="col-sm-1 col-form-label">Konsumen</label>
+              <span class="ml-4 col-form-label">:</span>
+              <div class="col-sm-4">
+                <input type="text" class="form-control" id="konsumenTrx" placeholder="Hoew" />
+              </div>
+            </div>
+
+            <!-- <div class="form-group row">
               <label for="supTrx" class="col-sm-1 col-form-label">Konsumen</label>
               <span class="ml-4 col-form-label">:</span>
               <div class="col-sm-4">
@@ -102,7 +123,7 @@ $result = mysqli_query($conn, $sql);
                   <option value="3">Ceri</option>
                 </select>
               </div>
-            </div>
+            </div> -->
 
             <div class="form-group row">
               <label for="telTrx" class="col-sm-1 col-form-label">Telepon</label>
@@ -122,13 +143,12 @@ $result = mysqli_query($conn, $sql);
             <div class="form-group row"></div>
 
             <div class="form-group row text-left">
+
               <div class="col-sm-2">
                 <button type="button" class="btn btn-primary" id="pilihBarang">Pilih Barang</button>
               </div>
 
-              <div class="col-sm-1">
-                <input type="text" class="form-control" id="kodeInput" placeholder="M001" />
-              </div>
+
               <div class="col-sm-2">
                 <input type="text" class="form-control" id="namaInput" placeholder="Batu" />
               </div>
@@ -140,6 +160,9 @@ $result = mysqli_query($conn, $sql);
               </div>
               <div class="col-sm-1">
                 <input type="number" class="form-control" id="jumlahInput" placeholder="5" />
+              </div>
+              <div class="col-sm-1 invisible">
+                <input type="text" class="form-control" id="kodeInput" placeholder="M001" />
               </div>
               <div class="col-sm-2">
                 <button type="button" class="btn btn-success" id="saveTrx">Save</button>
@@ -430,11 +453,20 @@ $result = mysqli_query($conn, $sql);
         $("#modalBarangKode").modal("show");
       });
 
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+
+      // today = mm + '/' + dd + '/' + yyyy;
+      // document.write(today);
+      today = yyyy + "/" + mm + "/" + dd
+
       var data = new Date();
-      var tglDate = 1;
+      var tglDate = data.getDay() + 1;
       var tanggal = data.getFullYear() + "-" + (data.getMonth() + 1) + "-" + tglDate;
-      $(".tgl").text(tanggal);
-      $("#tglTrx").val(tanggal);
+      $(".tgl").text(today);
+      $("#tglTrx").val(today);
       $('#tglTrx').prop('readonly', true);
 
 
@@ -443,7 +475,7 @@ $result = mysqli_query($conn, $sql);
       $("#tbodyAddPermintaan tr").each(function() {
         var tanggal = data.getFullYear() + "-" + data.getMonth() + "-" + tglDate;
         var currentRow = $(this);
-        currentRow.find("td:eq(1)").text(tanggal);
+        currentRow.find("td:eq(1)").text(today);
         tglDate = tglDate + 1;
       });
 
@@ -454,14 +486,14 @@ $result = mysqli_query($conn, $sql);
         // console.log(currentRow.find("td:eq(5)").text());
         grandTotal += Number(currentRow.find("td:eq(5)").text());
         totalItem += Number(currentRow.find("td:eq(4)").text());
-        // console.log(grandTotal);
+        console.log(totalItem);
       });
 
       $("#totalPermintaan").text(grandTotal);
       $("#totalItem").text(totalItem);
 
-      $('#telTrx').prop('readonly', true);
-      $('#alamatTrx').prop('readonly', true);
+      // $('#telTrx').prop('readonly', true);
+      // $('#alamatTrx').prop('readonly', true);
       $("#supTrx").change(function() {
         var namaSup = $("#supTrx").find(":selected").val();
 
@@ -478,7 +510,7 @@ $result = mysqli_query($conn, $sql);
       });
 
 
-      $('#jabatanTrx').prop('readonly', true);
+      // $('#jabatanTrx').prop('readonly', true);
 
 
       $("#karyawanTrx").change(function() {
@@ -498,6 +530,7 @@ $result = mysqli_query($conn, $sql);
       $("#saveTrx").click(function() {
         $(".odd").remove();
         grandTotal = 0;
+        totalItem = 0;
         let panjang = $("#tbodyAddPermintaan tr").length;
         // console.log(panjang);
         let kode = $("#kodeInput").val();
@@ -529,21 +562,26 @@ $result = mysqli_query($conn, $sql);
         $("#tbodyAddPermintaan tr").each(function() {
           let currentRow = $(this);
           grandTotal += Number(currentRow.find("td:eq(5)").text());
+          totalItem += Number(currentRow.find("td:eq(4)").text());
           // console.log(total);
           $("#totalPermintaan").text(grandTotal);
+          $("#totalItem").text(totalItem);
         });
       });
 
       $("#tbodyAddPermintaan").on("click", ".removeTrx", function() {
         grandTotal = 0;
+        totalItem = 0;
         var id = $(this).attr("id");
         $(this).closest("tr").remove();
         $("#tbodyAddPermintaan tr").each(function() {
           var currentRow = $(this);
 
           grandTotal += Number(currentRow.find("td:eq(5)").text());
+          totalItem += Number(currentRow.find("td:eq(4)").text());
         });
         $("#totalPermintaan").text(grandTotal);
+        $("#totalItem").text(totalItem);
       });
 
       $(".tableKodeBarang").on("click", ".pilihKode", function() {
@@ -587,23 +625,25 @@ $result = mysqli_query($conn, $sql);
 
         let kodeper1 = kodeTgl;
         let tanggal1 = $("#tglTrx").val();
-        let konsumen1 = $("#supTrx option:selected").text();
+        // let konsumen1 = $("#supTrx option:selected").text();
+        let konsumen1 = $("#konsumenTrx").val();
         let karyawan1 = $("#karyawanTrx").find(":selected").val();
         let telp1 = $("#telTrx").val();
         let alamat1 = $("#alamatTrx").val();
-        let keterangan1 = $("#jabatanTrx").val();
+        // let keterangan1 = $("#jabatanTrx").val();
+        let keterangan1 = $("#ketTrx").val();
         let total1 = $("#totalPermintaan").text();
 
         // kodeper1.toString();
 
-        console.log(kodeper1);
-        console.log(tanggal1);
-        console.log(konsumen1);
-        console.log(karyawan1);
-        console.log(telp1);
-        console.log(alamat1);
-        console.log(keterangan1);
-        console.log(total1);
+        // console.log(kodeper1);
+        // console.log(tanggal1);
+        // console.log(konsumen1);
+        // console.log(karyawan1);
+        // console.log(telp1);
+        // console.log(alamat1);
+        // console.log(keterangan1);
+        // console.log(total1);
 
 
 
@@ -671,10 +711,6 @@ $result = mysqli_query($conn, $sql);
           },
         });
 
-
-
-
-
       });
 
       $("#cancelMasterDetail").click(function() {
@@ -685,7 +721,9 @@ $result = mysqli_query($conn, $sql);
       function reset() {
         $("#telTrx").val("");
         $("#alamatTrx").val("");
-        $("#jabatanTrx").val("");
+        $("#telTrx").val("");
+        $("#alamatTrx").val("");
+        $("#ketTrx").val("");
       }
     });
   </script>
