@@ -3,10 +3,10 @@
 $servermame = "localhost";
 $username = "root";
 $password = "";
-$database = "toko";
+$database = "toko_habib";
 
 $conn = mysqli_connect($servermame, $username, $password, $database);
 
-if(!$conn){
+if (!$conn) {
   die("Koneksi gagal. " . mysqli_connect_error());
 }
