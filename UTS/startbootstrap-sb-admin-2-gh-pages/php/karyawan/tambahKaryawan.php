@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 
-<div id="barang">
+<div id="karyawan">
   <!-- Page Wrapper -->
   <div id="wrapper">
     <!-- Content Wrapper -->
@@ -16,31 +16,18 @@ $result = mysqli_query($conn, $sql);
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-        <nav
-          class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-        >
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
           <!-- Sidebar Toggle (Topbar) -->
           <form class="form-inline">
-            <button
-              id="sidebarToggleTop"
-              class="btn btn-link d-md-none rounded-circle mr-3"
-            >
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
               <i class="fa fa-bars"></i>
             </button>
           </form>
 
           <!-- Topbar Search -->
-          <form
-            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search"
-          >
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input
-                type="text"
-                class="form-control bg-light border-0 small"
-                placeholder="Search for..."
-                aria-label="Search"
-                aria-describedby="basic-addon2"
-              />
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
               <div class="input-group-append">
                 <button class="btn btn-success" type="button">
                   <i class="fas fa-search fa-sm"></i>
@@ -58,12 +45,7 @@ $result = mysqli_query($conn, $sql);
           <!-- Page Heading -->
           <div class="row p-3 flex justify-content-between">
             <h1 class="h3 mb-2 text-gray-800">Karyawan</h1>
-            <button
-              type="button"
-              class="btn addKaryawan btn-success px-3 my-2"
-              data-toggle="modal"
-              data-target="#modalAddKaryawan"
-            >
+            <button type="button" class="btn addKaryawan btn-success px-3 my-2" data-toggle="modal" data-target="#modalAddKaryawan">
               <i class="fas fa-plus fa-sm"></i>
             </button>
           </div>
@@ -71,12 +53,7 @@ $result = mysqli_query($conn, $sql);
           <div class="card shadow mb-4">
             <div class="card-body">
               <div class="table-responsive">
-                <table
-                  class="table table-bordered"
-                  id="dataTableKaryawan"
-                  width="100%"
-                  cellspacing="0"
-                >
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Kode</th>
@@ -99,27 +76,27 @@ $result = mysqli_query($conn, $sql);
                     </tfoot> -->
                   <tbody id="tbodyTabelKaryawan">
                     <?php
-                      if(mysqli_num_rows($result) > 0){
-                        while($row = mysqli_fetch_assoc($result)){
-                          echo "<tr>";
-                          echo "<td>" . $row["kode_karyawan"] . "</td>";
-                          echo "<td>" . $row["nama_karyawan"] . "</td>";
-                          echo "<td>" . $row["jabatan"] . "</td>";
-                          echo "<td>" . $row["telepon"] . "</td>";
-                          echo "<td>" . $row["email"] . "</td>";
-                          echo "<td>" . $row["password"] . "</td>";
-                          echo "<td>";
-                          echo "<button id='updateKaryawan' class='btn btn-outline-primary' data-toggle='modal' data-target='#modalAddKaryawan' > <i class='fas fa-pen fa-sm'></i></i> </button>";
-                          echo "<div style='display:inline-block; width:10px;'></div>";
-                          echo "</td>";
-                          echo "</tr>";
-                        }
-                      }else{
+                    if (mysqli_num_rows($result) > 0) {
+                      while ($row = mysqli_fetch_assoc($result)) {
                         echo "<tr>";
-                        echo "<td colspan='6' class='text-center'>Data Kosong</td>";
+                        echo "<td>" . $row["kode_karyawan"] . "</td>";
+                        echo "<td>" . $row["nama_karyawan"] . "</td>";
+                        echo "<td>" . $row["jabatan"] . "</td>";
+                        echo "<td>" . $row["telepon"] . "</td>";
+                        echo "<td>" . $row["email"] . "</td>";
+                        echo "<td>" . $row["password"] . "</td>";
+                        echo "<td>";
+                        echo "<button id='updateKaryawan' class='btn btn-outline-primary' data-toggle='modal' data-target='#modalAddKaryawan' > <i class='fas fa-pen fa-sm'></i></i> </button>";
+                        echo "<div style='display:inline-block; width:10px;'></div>";
+                        echo "</td>";
                         echo "</tr>";
                       }
-                    ?>                  
+                    } else {
+                      echo "<tr>";
+                      echo "<td colspan='6' class='text-center'>Data Kosong</td>";
+                      echo "</tr>";
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
@@ -140,73 +117,36 @@ $result = mysqli_query($conn, $sql);
   </a>
 
   <!-- modal add -->
-  <div
-    class="modal fade"
-    id="modalAddKaryawan"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="modalAddKaryawanLabel"
-    aria-hidden="true"
-  >
+  <div class="modal fade" id="modalAddKaryawan" tabindex="-1" role="dialog" aria-labelledby="modalAddKaryawanLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header border-bottom-0">
           <h5 class="modal-title" id="modalLabelKarayawan">Karyawan</h5>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
         <form>
           <div class="modal-body">
-            <input
-              type="hidden"
-              name="_token"
-              value="x69ZyrUU0dB2R3MQup1nPSO2BmKoNvtymxYQWPAN"
-            />
+            <input type="hidden" name="_token" value="x69ZyrUU0dB2R3MQup1nPSO2BmKoNvtymxYQWPAN" />
             <input type="hidden" id="editId" value="" />
             <div class="form-group">
               <label for="kodeKaryawan">Kode</label>
-              <input
-                type="text"
-                class="form-control"
-                id="kodeKaryawan"
-                placeholder="K001"
-                name="kodeKaryawan"
-              />
+              <input type="text" class="form-control" id="kodeKaryawan" placeholder="K001" name="kodeKaryawan" />
             </div>
             <div class="form-group">
               <label for="namaKaryawan">Nama</label>
-              <input
-                type="text"
-                class="form-control"
-                id="namaKaryawan"
-                placeholder="Batu"
-              />
+              <input type="text" class="form-control" id="namaKaryawan" placeholder="Batu" />
             </div>
             <div class="form-group">
               <label for="jabatanKaryawan">Jabatan</label>
-              <input
-                type="text"
-                class="form-control"
-                id="jabatanKaryawan"
-                placeholder="Admin"
-              />
+              <input type="text" class="form-control" id="jabatanKaryawan" placeholder="Admin" />
             </div>
             <div class="form-group">
               <div class="row">
                 <div class="col">
                   <label for="telpKaryawan">Telepon</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    id="telpKaryawan"
-                    placeholder="124567854"
-                  />
+                  <input type="tel" class="form-control" id="telpKaryawan" placeholder="124567854" />
                 </div>
               </div>
             </div>
@@ -214,12 +154,7 @@ $result = mysqli_query($conn, $sql);
               <div class="row">
                 <div class="col">
                   <label for="emailKaryawan">Email</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="emailKaryawan"
-                    placeholder="hab2gmail.com"
-                  />
+                  <input type="email" class="form-control" id="emailKaryawan" placeholder="hab2gmail.com" />
                 </div>
               </div>
             </div>
@@ -227,12 +162,7 @@ $result = mysqli_query($conn, $sql);
               <div class="row">
                 <div class="col">
                   <label for="passwordKaryawan">Password</label>
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="passwordKaryawan"
-                    placeholder="12345678"
-                  />
+                  <input type="password" class="form-control" id="passwordKaryawan" placeholder="12345678" />
                 </div>
               </div>
             </div>
@@ -242,12 +172,7 @@ $result = mysqli_query($conn, $sql);
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
             Close
           </button>
-          <button
-            type="button"
-            class="btn btn-success"
-            id="addKaryawan"
-            data-dismiss="modal"
-          >
+          <button type="button" class="btn btn-success" id="addKaryawan" data-dismiss="modal">
             Add
           </button>
           <button type="button" id="uptdKaryawan" class="btn btn-success" data-dismiss="modal">
@@ -271,24 +196,12 @@ $result = mysqli_query($conn, $sql);
   </div>
 
   <!-- modal view barang -->
-  <div
-    class="modal fade"
-    id="modalViewBarang"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="modalViewLabel"
-    aria-hidden="true"
-  >
+  <div class="modal fade" id="modalViewBarang" tabindex="-1" role="dialog" aria-labelledby="modalViewLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modalViewLabel">Detail Barang</h5>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
@@ -318,24 +231,12 @@ $result = mysqli_query($conn, $sql);
   </div>
 
   <!-- Logout Modal-->
-  <div
-    class="modal fade"
-    id="logoutModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button
-            class="close"
-            type="button"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
@@ -361,27 +262,27 @@ $result = mysqli_query($conn, $sql);
 
 
   <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
+      $("#uptdKaryawan").hide();
+      $(".btnHps").hide();
+      $("#addKaryawan").show();
+
+      $(".addKaryawan").click(function() {
+        $("#kodeKaryawan").val("");
+        $("#namaKaryawan").val("");
+        $("#jabatanKaryawan").val("");
+        $("#telpKaryawan").val("");
+        $("#emailKaryawan").val("");
+        $("#passwordKaryawan").val("");
+        $('#kodeKaryawan').prop('readonly', false);
+      })
+
+      $("#addKaryawan").click(function() {
+
+
         $("#uptdKaryawan").hide();
         $(".btnHps").hide();
         $("#addKaryawan").show();
-
-        $(".addKaryawan").click(function(){
-          $("#kodeKaryawan").val("");
-          $("#namaKaryawan").val("");
-          $("#jabatanKaryawan").val("");
-          $("#telpKaryawan").val("");
-          $("#emailKaryawan").val("");
-          $("#passwordKaryawan").val("");
-          $('#kodeKaryawan').prop('readonly', false);
-        })
-
-      $("#addKaryawan").click(function () { 
-
-      
-        $("#uptdKaryawan").hide();
-        $(".btnHps").hide();
-        $("#addKaryawan").show(); 
         var kode = $("#kodeKaryawan").val();
         var nama = $("#namaKaryawan").val();
         var jabatanKaryawan = $("#jabatanKaryawan").val();
@@ -401,14 +302,14 @@ $result = mysqli_query($conn, $sql);
             emailKaryawan: emailKaryawan,
             passwordKaryawan: passwordKaryawan
           },
-          success: function (data) {
+          success: function(data) {
             console.log(data);
             // alert("Data Berhasil Ditambahkan");
-                      $("#content").load("php/karyawan/tambahKaryawan.php");
+            $("#content").load("php/karyawan/tambahKaryawan.php");
 
             // location.reload();
           },
-          error: function (data) {
+          error: function(data) {
             console.log(data);
             alert("Data Gagal Ditambahkan");
           },
@@ -417,7 +318,7 @@ $result = mysqli_query($conn, $sql);
         $(".modal-backdrop .fade .show").remove();
       });
 
-      $("#uptdKaryawan").click(function () {
+      $("#uptdKaryawan").click(function() {
         var kode = $("#kodeKaryawan").val();
         var nama = $("#namaKaryawan").val();
         var jabatanKaryawan = $("#jabatanKaryawan").val();
@@ -437,14 +338,14 @@ $result = mysqli_query($conn, $sql);
             emailKaryawan: emailKaryawan,
             passwordKaryawan: passwordKaryawan,
           },
-          success: function (data) {
+          success: function(data) {
             console.log(data);
             // alert("Data Berhasil Ditambahkan");
-                      $("#content").load("php/karyawan/tambahKaryawan.php");
+            $("#content").load("php/karyawan/tambahKaryawan.php");
 
             // location.reload();
           },
-          error: function (data) {
+          error: function(data) {
             console.log(data);
             alert("Data Gagal Ditambahkan");
           },
@@ -453,7 +354,7 @@ $result = mysqli_query($conn, $sql);
 
       });
 
-      $("#hapusKaryawan").click(function () {
+      $("#hapusKaryawan").click(function() {
         var kode = $("#kodeKaryawan").val();
         var nama = $("#namaBarang").val();
         var jabatanKaryawan = $("#jabatanKaryawan").val();
@@ -473,14 +374,14 @@ $result = mysqli_query($conn, $sql);
             emailKaryawan: emailKaryawan,
             passwordKaryawan: passwordKaryawan,
           },
-          success: function (data) {
+          success: function(data) {
             console.log(data);
             // alert("Data Berhasil Ditambahkan");
-                      $("#content").load("php/karyawan/tambahKaryawan.php");
+            $("#content").load("php/karyawan/tambahKaryawan.php");
 
             // location.reload();
           },
-          error: function (data) {
+          error: function(data) {
             console.log(data);
             alert("Data Gagal Ditambahkan");
           },
@@ -488,9 +389,9 @@ $result = mysqli_query($conn, $sql);
         $(".modal-backdrop .fade .show").remove();
       });
 
-  
 
-      $(".table").on("click", "#updateKaryawan", function () {
+
+      $(".table").on("click", "#updateKaryawan", function() {
         $("#uptdKaryawan").show();
         $(".btnHps").show();
         $("#addKaryawan").hide();
@@ -513,7 +414,7 @@ $result = mysqli_query($conn, $sql);
         $("#emailKaryawan").val(col5);
         $("#passwordKaryawan").val(col6);
         $('#kodeKaryawan').prop('readonly', true);
-      });      
+      });
     });
   </script>
 </div>

@@ -14,6 +14,8 @@
     exit();
   }
 
+  
+
   $sql = "insert into karyawan values('$kode_karyawan', '$nama_karyawan', '$jabatan', '$telepon', '$email', '" . password_hash($password, PASSWORD_DEFAULT) . "')";
   $result = mysqli_query($conn, $sql);
 
