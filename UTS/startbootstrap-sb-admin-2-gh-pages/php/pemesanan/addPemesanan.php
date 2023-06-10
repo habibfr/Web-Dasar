@@ -640,7 +640,7 @@ $resultSup = mysqli_query($conn, $sqlSup);
 
       $("#cancelMasterDetail").click(function() {
         // Headers("location: permintaan.php");
-        $("#content").load("php/transaksi/permintaan.php");
+        $("#content").load("php/pemesanan/pemesanan.php");
       });
 
       function reset() {

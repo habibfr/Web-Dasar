@@ -200,7 +200,7 @@ $result = mysqli_query($conn, $sql);
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalRekapViewLabel">View Permintaan</h5>
+          <h5 class="modal-title" id="modalRekapViewLabel">View Pemesanan</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -210,8 +210,9 @@ $result = mysqli_query($conn, $sql);
             <ul class="list-group list-group-flush">
               <li class="list-group-item detKode">Kode : J001</li>
               <li class="list-group-item detTanggal">Tanggal : 2023-4-8</li>
-              <li class="list-group-item detKonsumen">Konsumen : Agus</li>
               <li class="list-group-item detKaryawan">Karyawan : Budi M</li>
+              <li class="list-group-item detSupplier">Supplier : Agus</li>
+              <li class="list-group-item detKeterangan">Keterangan : OK</li>
             </ul>
           </div>
 
@@ -280,10 +281,6 @@ $result = mysqli_query($conn, $sql);
 
   <script>
     $(document).ready(function() {
-
-      let dataPer = [];
-
-
       var grandTotal = 0;
       var totalItem = 0;
       $("#tbodyTabelPemesanan tr").each(function() {
@@ -301,34 +298,30 @@ $result = mysqli_query($conn, $sql);
       });
 
       $(".tableMasterPemesanan").on("click", "#viewPemesanan", function() {
-
-        // $("#uptdBarang").show();
-        // $(".btnHps").show();
-        // $("#addBarang").hide();
-
-        // ("#kodeBarang").attr('readonly', true);
         var currentRow = $(this).closest("tr");
 
         var col1 = currentRow.find("td:eq(0)").text(); // get current row 1st TD value
-        var col2 = currentRow.find("td:eq(1)").text(); // get current row 2nd TD
-        var col3 = currentRow.find("td:eq(2)").text();
-        var col4 = currentRow.find("td:eq(6)").text();
-        // var col5 = currentRow.find("td:eq(4)").text();
-        console.log(col1, col2, col3);
+        var col2 = currentRow.find("td:eq(3)").text(); // get current row 2nd TD
+        var col3 = currentRow.find("td:eq(1)").text();
+        var col4 = currentRow.find("td:eq(2)").text();
+        var col5 = currentRow.find("td:eq(6)").text();
+        // console.log(col1, col2, col3);
 
 
         $(".detKode").text("Kode : " + col1);
         $(".detTanggal").text("Tanggal : " + col2);
-        $(".detKonsumen").text("Konsumen : " + col3);
+        $(".detKaryawan").text("Karyawan : " + col3);
+        $(".detSupplier").text("Supplier : " + col4);
+        $(".detKeterangan").text("Keterangan : " + col5);
 
 
 
         $.ajax({
-          url: "php/pemesanan/detailKaryawan.php",
+          url: "php/transaksi/detailKaryawan.php",
           type: "POST",
           dataType: "json",
           data: {
-            kodeKar: col4,
+            kodeKar: col3,
           },
           success: function(data, response) {
             $(".detKaryawan").text("Karyawan : " + data[0].nama_karyawan);
@@ -338,33 +331,44 @@ $result = mysqli_query($conn, $sql);
           },
         });
 
+
         $.ajax({
-          url: "php/pemesanan/kodePermintaan.php",
+          url: "php/pemesanan/detaiLSupplier.php",
           type: "POST",
           dataType: "json",
           data: {
-            kodePer: col1,
+            kodeSup: col4,
           },
           success: function(data, response) {
+            $(".detSupplier").text("Supplier : " + data[0].nama_sales);
+          },
+          error: function(data) {
+            alert("Gagal Sup");
+          },
+        });
 
-
-            dataPer = [];
+        $.ajax({
+          url: "php/pemesanan/kodePemesanan.php",
+          type: "POST",
+          dataType: "json",
+          data: {
+            kodePem: col1,
+          },
+          success: function(data, response) {
             let jumlahItem = 0;
             $("#tbodyViewPemesanan tr").remove();
             $("#tfootViewPemesanan tr").remove();
 
             let i = 0;
-            // console.log(dataBarang[0].nama_barang)
             for (const d of data) {
               jumlahItem += Number(d.jumlah);
-              // dataPer.push(d)
               $('#tbodyViewPemesanan').append(`
                 <tr>
                   <td>${d.kode_barang}</td>
                   <td>${d.nama_barang}</td>
                   <td>${d.satuan}</td>
                   <td>${d.jumlah}</td>
-                  <td>${d.harga_jual}</td>
+                  <td>${d.harga_beli}</td>
                 </tr>
             `);
               i++;
@@ -373,16 +377,13 @@ $result = mysqli_query($conn, $sql);
             $('#tfootViewPemesanan').append(` 
                     <tr>
                       <th colspan="3">Total</th>
-                      <th id="totalItem">${jumlahItem}</th>
-                      <th id="totalPermintaan">${data[0].total}</th>
+                      <th id="totalItem">${data[0].total_item}</th>
+                      <th id="totalPermintaan">${data[0].total_hrg}</th>
                     </tr>`);
 
             $(".tableViewPemesanan").DataTable();
           },
-
-
           error: function(data) {
-            // console.log(data);
             alert("Data Gagal Ditambahkan");
           },
         });
